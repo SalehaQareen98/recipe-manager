@@ -36,6 +36,10 @@
       <h1>Recipe: <?php echo htmlspecialchars($result['Title']); ?></h1>
 
       <div class="attributes">
+      <dl>
+          <dt>Type</dt>
+          <dd><?php echo htmlspecialchars($result['Type']); ?></dd>
+        </dl>
         <dl>
           <dt>Time to Cook</dt>
           <dd><?php echo htmlspecialchars($result['TimeToCook']); ?></dd>
@@ -52,14 +56,10 @@
           <dt>Directions</dt>
           <dd><?php echo nl2br(htmlspecialchars($result['Directions'])); ?></dd>
         </dl>
-        <dl>
-          <dt>Type</dt>
-          <dd><?php echo htmlspecialchars($result['Type']); ?></dd>
-        </dl>
-        <dl>
+        <!-- <dl>
           <dt>Added By User ID</dt>
           <dd><?php echo htmlspecialchars($result['UserID']); ?></dd>
-        </dl>
+        </dl> -->
       </div>
 
     </div>

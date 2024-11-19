@@ -1,24 +1,12 @@
 -- Create the database
 CREATE DATABASE IF NOT EXISTS recipemanager;
+
+-- Grant privileges to the user
 GRANT USAGE ON *.* TO 'appuser'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON recipemanager.* TO 'appuser'@'localhost';
 FLUSH PRIVILEGES;
 
 USE recipemanager;
-
--- Create the recipes table
-CREATE TABLE IF NOT EXISTS `recipes` (
-  `RecipeID` int(11) NOT NULL AUTO_INCREMENT,
-  `Title` varchar(100) NOT NULL,
-  `TimeToCook` varchar(50) NOT NULL,
-  `Vegetarian` tinyint(1) NOT NULL,  -- tinyint is boolean
-  `Ingredients` text NOT NULL,
-  `Directions` text NOT NULL,
-  `Type` enum('Appetizer','Main Course','Dessert','Drinks') NOT NULL,  -- enum: predefined list
-  `UserID` int(11) NOT NULL,
-  PRIMARY KEY (`RecipeID`),  -- Primary key on RecipeID
-  FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE  -- Foreign key constraint
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Create the users table
 CREATE TABLE IF NOT EXISTS `users` (
@@ -34,6 +22,20 @@ INSERT INTO `users` (`UserID`, `Email`, `PasswordHash`) VALUES
 (1, 'Rob@gmail.com', 'password_1'),
 (2, 'Steve@gmail.com', 'password_2');
 
+-- Create the recipes table
+CREATE TABLE IF NOT EXISTS `recipes` (
+  `RecipeID` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(100) NOT NULL,
+  `TimeToCook` varchar(50) NOT NULL,
+  `Vegetarian` tinyint(1) NOT NULL,  -- tinyint is boolean
+  `Ingredients` text NOT NULL,
+  `Directions` text NOT NULL,
+  `Type` enum('Appetizer','Main Course','Dessert','Drinks') NOT NULL,  -- enum: predefined list
+  `UserID` int(11) NOT NULL,
+  PRIMARY KEY (`RecipeID`),  -- Primary key on RecipeID
+  FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE  -- Foreign key constraint
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- Insert data into the recipes table
 INSERT INTO `recipes` (`RecipeID`, `Title`, `TimeToCook`, `Vegetarian`, `Ingredients`, `Directions`, `Type`, `UserID`) VALUES
 (1, 'Bruschetta', '15 minutes', 1, 'Bread, Tomatoes, Basil, Olive Oil', '1. Slice the bread into pieces and toast them lightly in the oven or on a grill.\n2. Dice the tomatoes and mix them with chopped basil, olive oil, salt, and pepper.\n3. Spoon the tomato mixture onto the toasted bread slices.\n4. Optionally, drizzle a bit more olive oil on top before serving.', 'Appetizer', 1),
@@ -44,4 +46,3 @@ INSERT INTO `recipes` (`RecipeID`, `Title`, `TimeToCook`, `Vegetarian`, `Ingredi
 (6, 'Panna Cotta', '2 hours', 1, 'Cream, Sugar, Gelatin, Vanilla', 'Heat cream, mix gelatin, chill, and serve.', 'Dessert', 2),
 (7, 'Mojito', '10 minutes', 1, 'Mint Leaves, Lime, Sugar, Soda', 'Muddle mint and lime, mix with soda.', 'Drinks', 1),
 (8, 'Mango Smoothie', '5 minutes', 1, 'Mango, Yogurt, Honey', 'Blend all ingredients and serve chilled.', 'Drinks', 2);
-

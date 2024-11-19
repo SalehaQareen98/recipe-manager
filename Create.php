@@ -10,7 +10,7 @@ $db = db_connect();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via POST
     // Capture form data
     $title = $_POST['title']; // Recipe title
-    $time_to_cook = $_POST['time']; // Time to cook
+    $time_to_cook = $_POST['time_to_cook']; // Time to cook
     $vegetarian = $_POST['vegetarian']; // 1 for Vegetarian, 0 for Non-Vegetarian
     $ingredients = $_POST['ingredients']; // Ingredients list
     $directions = $_POST['directions']; // Cooking directions

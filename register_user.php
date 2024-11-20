@@ -1,34 +1,37 @@
 <?php
 require_once('database.php');
 $db = db_connect();
+// if (!$db) die('');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Capture form data
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    // Capture and sanitize form data
+    $name = mysqli_real_escape_string($db, $_POST['name']);
+    $email = mysqli_real_escape_string($db, $_POST['email']);
+    $password = $_POST['password']; // Password does not need to be escaped
 
     // Hash the password for secure storage
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert the user into the database
-    $stmt = $db->prepare("INSERT INTO users (Name, Email, PasswordHash) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $passwordHash);
+    // Construct the SQL query
+    $sql = "INSERT INTO users (Name, Email, PasswordHash) VALUES ('$name', '$email', '$passwordHash')";
 
-    if ($stmt->execute()) {
-        echo "<p>Registration successful! You can now <a href='login.php'>log in</a>.</p>";
+    // Execute the query
+    if (mysqli_query($db, $sql)) {
+        echo "<p>Registration successful! You can now <a href='home.php'>log in</a>.</p>";
     } else {
-        if ($db->errno == 1062) {
+        // Handle errors (e.g., duplicate email)
+        if (mysqli_errno($db) == 1062) {
             echo "<p style='color:red;'>This email is already registered. Please use a different email.</p>";
         } else {
-            echo "<p>Error: " . $db->error . "</p>";
+            echo "<p>Error: " . mysqli_error($db) . "</p>";
         }
     }
 
-    $stmt->close();
+    // Close the database connection
     db_disconnect($db);
 } else {
-    header("Location: register.php");
+    // Redirect if the request method is not POST
+    header("Location: registeration.html");
     exit;
 }
 ?>

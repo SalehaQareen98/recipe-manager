@@ -5,6 +5,8 @@
 <head>
     <link rel="stylesheet" href="style.css" />
     <title>Online Recipe Manager</title>
+    <a href="login.php">Login</a> | <a href="register.php">Create an Account</a>
+
 </head>
 
 <body>

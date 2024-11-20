@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         termError = document.createElement('p');
         termError.setAttribute("id", "termError");
-        document.querySelectorAll(".checkbox")[1].append(termError);
+        document.querySelector(".checkbox").append(termError);
 
     // Inline validation for email on blur
     emailInput.addEventListener("blur", function() { //sets up an event listener that listens for the blur event on the emailInput element when user click away/tab out of the field
@@ -71,12 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
     termInput.addEventListener("change", function() {//The change event fires whenever the user checks or unchecks the box.
         let termsValidation = validateTerms();
         termError.textContent = termsValidation;
-    });
-
-    newsletterInput.addEventListener("change", function() {
-        if (this.checked) {
-            alert("You may receive additional spam emails by signing up for the newsletter.");
-        }
     });
 
     // Event listener for form submission
@@ -136,6 +130,7 @@ function validateTerms() {
 
 // Main validate function for form submission: executed when the form is submitted.
 function validate() {
+    console.log("inside validate func");
     let valid = true;
 
     // Email validation

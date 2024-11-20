@@ -9,11 +9,11 @@
 <body>
     <header class="main-header">
         <div class="title">
-            <a href="index.php" class="home-link">Home</a> <!-- Home link -->
+            <a href="home.php" class="home-link">Home</a> <!-- Home link -->
             <h1>Bon Appétit</h1>
         </div>
 
-        <form class="search-bar" action="index.php" method="GET">
+        <form class="search-bar" action="index.php" method="POST">
             <input type="text" name="search" placeholder="Search recipes..." required>
             <button type="submit">Search</button>
         </form>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="user-profile">
-            <a href="profile.php">
+            <a href="profile.php">                  <!-- create profile/dashboard.php -->
                 <img src="profile-icon.png" alt="User Profile" class="profile-icon">
             </a>
         </div>

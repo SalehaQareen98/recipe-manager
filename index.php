@@ -1,68 +1,73 @@
-<!-- landing page -->
+<?php
+// Include the database connection file
+require_once('database.php');
+
+// Start a session to manage user authentication
+session_start();
+
+// Check if the request method is POST (form submission)
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Retrieve user-submitted email and password from the login form
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Sanitize the email input to prevent SQL injection
+    $email = mysqli_real_escape_string($db, $email);
+
+    // Query to find the user in the database by email
+    $sql = "SELECT * FROM users WHERE Email = '$email'";
+    $result = mysqli_query($db, $sql);
+    // Check if a matching user record exists
+    if ($result && mysqli_num_rows($result) > 0) {
+        // Fetch the user record as an associative array
+        $user = mysqli_fetch_assoc($result);
+
+        // Verify the hashed password stored in the database with the user-entered password
+        if (password_verify($password, $user['PasswordHash'])) {
+            // Store user data in the session for authentication
+            $_SESSION['user_id'] = $user['UserID']; // Store UserID
+            $_SESSION['name'] = $user['Name'];     // Store user's name
+
+            // Redirect to home after successful login
+            header("Location: home.php");
+            exit; // Stop further script execution
+        } else {
+            // Set an error message for invalid password
+            $error_message = "Invalid password. Please try again.";
+        }
+    } else {
+        // Set an error message if no user is found with the entered email
+        $error_message = "No account found with this email. Please register.";
+        header("location: registration.html");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="style.css" />
-    <title>Online Recipe Manager</title>
-    <a href="login.php">Login</a> | <a href="register.php">Create an Account</a>
-
+    <title>Login</title>
 </head>
-
 <body>
-    <!-- Include the header -->
-    <?php include("header.php");
-    // Connect to the database
-    require_once('database.php');
+    <h1>Login</h1>
 
-    $db = db_connect(); // Database connection
-    
-    // Query to fetch recipes
-    $sql = "SELECT * FROM recipes ";
-    $sql .= "ORDER BY TimeToCook ASC"; // Sort recipes by cooking time
-    $result_set = mysqli_query($db, $sql); // Execute the query
-    ?>
+    <!-- Display error messages dynamically if they are set -->
+    <?php if (isset($error_message)): ?>
+        <p style="color: red;"><?php echo $error_message; ?></p>
+    <?php endif; ?>
 
-    <div id="content">
-        <div class="subjects listing">
-            <h1>Recipes</h1>
+    <!-- Login form for user authentication -->
+    <form method="POST" action="home.php">
+        <!-- Email input field -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
 
-            <div class="actions">
-                <a class="action" href="new.php">Create New Recipe</a>
-            </div>
+        <!-- Password input field -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
 
-            <table class="list">
-                <tr>
-                    <!-- <th>Recipe ID</th> -->
-                    <th>Title</th>
-                    <th>Time to Cook</th>
-                    <th>Vegetarian</th>
-                    <th>Type</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                </tr>
-
-                <!-- Process and display results -->
-                <?php while ($recipe = mysqli_fetch_assoc($result_set)) { ?>
-                    <tr>
-                        <!-- <td><?php echo $recipe['RecipeID']; ?></td> -->
-                        <td><?php echo $recipe['Title']; ?></td>
-                        <td><?php echo $recipe['TimeToCook']; ?></td>
-                        <td><?php echo $recipe['Vegetarian'] ? "Yes" : "No"; ?></td>
-                        <td><?php echo $recipe['Type']; ?></td>
-                        <!-- Send the RecipeID as a parameter -->
-                        <td><a class="action" href="<?php echo "show.php?id=" . $recipe['RecipeID']; ?>">View</a></td>
-                        <td><a class="action" href="<?php echo "edit.php?id=" . $recipe['RecipeID']; ?>">Edit</a></td>
-                        <td><a class="action" href="<?php echo "delete.php?id=" . $recipe['RecipeID']; ?>">Delete</a></td>
-                    </tr>
-                <?php } ?>
-            </table>
-            
-
-            <!-- Include the footer -->
-            <?php include("footer.php"); ?>
-
+        <!-- Submit button to log in -->
+        <button type="submit">Login</button>
+    </form>
 </body>
-
 </html>

@@ -1,7 +1,13 @@
 <?php
-
+session_start(); // Start the session to access session variables
 require_once('database.php'); // Include database connection
 include "header.php"; // Include the header for consistent layout
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // Redirect to login page
+    exit;
+}
 
 // Connect to the database
 $db = db_connect();
@@ -15,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
     $ingredients = $_POST['ingredients']; // Ingredients list
     $directions = $_POST['directions']; // Cooking directions
     $type = $_POST['type']; // Recipe type (Appetizer, Main Course, etc.)
-    $user_id = 1; // Temporarily hardcoded; replace with session-based user ID when authentication is implemented
+    $user_id = $userID = $_SESSION['user_id'];; // Temporarily hardcoded; replace with session-based user ID when authentication is implemented
 
     // Prepare the SQL query string
     $sql = "INSERT INTO recipes (Title, TimeToCook, Vegetarian, Ingredients, Directions, Type, UserID) 

@@ -4,9 +4,10 @@ require_once('database.php');
 
 // Start a session to manage user authentication
 session_start();
-
 // Check if the request method is POST (form submission)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $db = db_connect(); // Database connection
     // Retrieve user-submitted email and password from the login form
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -19,8 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($db, $sql);
     // Check if a matching user record exists
     if ($result && mysqli_num_rows($result) > 0) {
+        
         // Fetch the user record as an associative array
         $user = mysqli_fetch_assoc($result);
+
 
         // Verify the hashed password stored in the database with the user-entered password
         if (password_verify($password, $user['PasswordHash'])) {
@@ -41,6 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("location: registration.html");
     }
 }
+else {
+    echo "<script>console.log('Inside else' );</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php endif; ?>
 
     <!-- Login form for user authentication -->
-    <form method="POST" action="home.php">
+    <form method="POST" action="index.php">
         <!-- Email input field -->
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>

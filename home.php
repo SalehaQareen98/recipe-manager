@@ -1,3 +1,10 @@
+<!-- <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit;
+}
+?> -->
 <!-- landing page -->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +23,9 @@
     require_once('database.php');
 
     $db = db_connect(); // Database connection
-    
+    $user_id = $_SESSION['user_id'];
     // Query to fetch recipes - VIEW
-    $sql = "SELECT * FROM recipes ";
+    $sql = "SELECT * FROM recipes WHERE UserID = '$user_id' ";
     $sql .= "ORDER BY TimeToCook ASC"; // Sort recipes by cooking time
     $result_set = mysqli_query($db, $sql); // Execute the query
     ?>

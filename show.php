@@ -29,7 +29,7 @@
     <!-- Display the recipe data -->
     <div id="content">
 
-        <a class="back-link" href="index.php">Back to List</a>
+        <a class="back-link" href="home.php">Home</a>
 
         <div class="page show">
 

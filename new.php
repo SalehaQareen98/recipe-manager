@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo 'index.php'; ?>">Back to List</a>
+  <a class="back-link" href="<?php echo 'home.php'; ?>">Home page</a>
 
   <div class="new-recipe">
     <h1>Create New Recipe</h1>

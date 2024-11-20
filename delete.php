@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result) {
         // Redirect to the main page after deletion
-        header("Location: index.php");
+        header("Location: home.php");
         exit;
     } else {
         // Handle query error
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <div id="content">
-    <a class="back-link" href="index.php">&laquo; Back to List</a>
+    <a class="back-link" href="home.php">&laquo; Home</a>
 
     <div class="page delete">
         <h1>Delete Recipe</h1>

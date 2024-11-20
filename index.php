@@ -75,5 +75,7 @@ else {
         <!-- Submit button to log in -->
         <button type="submit">Login</button>
     </form>
+    <button onclick="window.location.href='registration.html';">Sign-Up</button>
+
 </body>
 </html>

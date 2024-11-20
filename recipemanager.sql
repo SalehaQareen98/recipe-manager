@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `PasswordHash` varchar(255) NOT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `Email` (`Email`)  -- Unique constraint on Email
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
 
 -- Insert data into the users table
 INSERT INTO `users` (`UserID`, `Email`, `PasswordHash`) VALUES

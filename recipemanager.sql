@@ -22,6 +22,13 @@ INSERT INTO `users` (`UserID`, `Email`, `PasswordHash`) VALUES
 (1, 'Rob@gmail.com', 'password_1'),
 (2, 'Steve@gmail.com', 'password_2');
 
+ALTER TABLE `users`
+ADD COLUMN `Name` VARCHAR(100) NOT NULL AFTER `UserID`; -- @zahra: copy/paste and alter on your end too
+
+UPDATE `users` SET `Name` = 'Rob' WHERE `UserID` = 1;  --  @zahra: copy/paste and alter on your end too
+UPDATE `users` SET `Name` = 'Steve' WHERE `UserID` = 2; -- @zahra: copy/paste and update fields on your end too
+
+
 -- Create the recipes table
 CREATE TABLE IF NOT EXISTS `recipes` (
   `RecipeID` int(11) NOT NULL AUTO_INCREMENT,

@@ -44,15 +44,16 @@ if (!empty($keyword)) {
         }
     } else {
         // Display a message when no recipes match the search criteria
-        echo "<p>No recipes found matching your search criteria.</p>";
+        // echo "<p>No recipes found matching your search criteria.</p>";
+        header("Location:home.php");
     }
 
     // Free the result set
     mysqli_free_result($result_set);
-} else {
-    // Display a message when the search keyword is empty
-    echo "<p>Please enter a keyword to search for recipes.</p>";
-}
+// } else {
+//     // Display a message when the search keyword is empty
+//     echo "<p>Please enter a keyword to search for recipes.</p>";
+// }  not required since are search input feild is required. 
 
 // Close the database connection
 db_disconnect($db);

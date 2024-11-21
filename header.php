@@ -19,7 +19,7 @@
         </form>
 
         <div class="filter-dropdown">
-            <form action="index.php" method="GET">
+            <form action="filter.php" method="GET">
                 <select id="filter" name="filter">
                     <option value="">Filter Recipes</option>
                     <option value="Vegetarian">Vegetarian</option>

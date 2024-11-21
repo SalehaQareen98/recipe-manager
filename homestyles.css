@@ -1,0 +1,267 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header Styling */
+.header {
+    background-color: #000000;
+    padding: 15px;
+    text-align: center;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #FF7F50;
+}
+
+/* Main Container */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.title-image-container {
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
+    margin-bottom: 20px; /* Space between image and content */
+}
+
+.title-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the space while maintaining aspect ratio */
+}
+
+.title-text {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text */
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Search and Filter Section */
+.search-filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #FF5733;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #FF7F50;
+}
+
+.filter-dropdown select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.filter-dropdown button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #0f6469;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-dropdown button:hover {
+    background-color: #1f8d93;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #FF5733;
+}
+
+/* Actions */
+.actions {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.actions .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #FF5733;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.actions .btn:hover {
+    background-color: #FF7F50;
+}
+
+/* Recipe Cards Container */
+.recipe-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+/* Recipe Card Styling */
+.recipe-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    width: 250px; /* Adjust width as needed */
+}
+
+/* Hover effect for the card */
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Recipe Image Styling */
+.recipe-image {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.recipe-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers the area without stretching */
+    object-position: center;
+}
+
+/* Recipe Title */
+.recipe-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Recipe Details */
+.recipe-time,
+.recipe-vegetarian,
+.recipe-type {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Card Actions (Buttons) */
+.card-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Button Styling */
+.btn {
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Small Button Style */
+.btn-small {
+    background-color: #00796b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-small:hover {
+    background-color: #004d40;
+    transform: scale(1.05);
+}
+
+/* Danger Button (Optional) */
+.btn-danger {
+    background-color: #d32f2f;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #b71c1c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-filter-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .recipe-cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

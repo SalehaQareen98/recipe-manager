@@ -5,27 +5,41 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 ?> -->
-<!-- landing page -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homestyles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Online Recipe Manager</title>
-    <a href="index.php">Login</a> | <a href="registration.php">Create an Account</a>
-
 </head>
 
 <body>
-<div class="seacrh">
+    <header class="header">
+        <nav class="nav-bar">
+            <a href="index.php" class="nav-link">Profile</a>
+            <a href="index.php" class="nav-link">Logout</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="title-image-container">
+            <img src="images/title-img.jpg" alt="Recipe Image" class="title-img">
+            <div class="title-text">
+                <h1>Welcome to Recipe Manager</h1>
+                <p>Explore delicious recipes</p>
+        </div>
+        </div>
+        <div class="search-filter-section">
             <form class="search-bar" action="search.php" method="POST">
                 <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
-                <button type="submit">Search</button>
+                <button type="submit" class="btn btn-primary">Search</button>
             </form>
-        </div>
 
-        <div class="filter-dropdown">
-            <form action="filter.php" method="GET">
+            <form class="filter-dropdown" action="filter.php" method="GET">
                 <select id="filter" name="filter">
                     <option value="">Filter Recipes</option>
                     <option value="Vegetarian">Vegetarian</option>
@@ -34,62 +48,57 @@ if (!isset($_SESSION['user_id'])) {
                     <option value="30">Max Time: 30 minutes</option>
                     <option value="60">Max Time: 1 hour</option>
                 </select>
-                <button type="submit">Apply</button>
+                <button type="submit" class="btn btn-secondary">Apply</button>
             </form>
         </div>
-    <!-- Include the header -->
-    <?php include("header.php");
-    // Connect to the database
-    require_once('database.php');
 
-    $db = db_connect(); // Database connection
-    $user_id = $_SESSION['user_id'];
-    // Query to fetch recipes - VIEW
-    $sql = "SELECT * FROM recipes WHERE UserID = '$user_id' ";
-    $sql .= "ORDER BY TimeToCook ASC"; // Sort recipes by cooking time
-    $result_set = mysqli_query($db, $sql); // Execute the query
-    ?>
-
-    <div id="content">
-        <div class="subjects listing">
-            <h1>Recipes</h1>
-
+        <div class="recipes-listing">
+            <h1 class="section-title">Your Recipes</h1>
             <div class="actions">
-                <a class="action" href="new.php">Create New Recipe</a>  <!-- REDIRECTS TO CREATE NEW RECIPE FORM -->
+                <a class="btn btn-primary" href="new.php">Create New Recipe</a>
             </div>
 
-            <table class="list">
-                <tr>
-                    <!-- <th>Recipe ID</th> -->
-                    <th>Title</th>
-                    <th>Time to Cook</th>
-                    <th>Vegetarian</th>
-                    <th>Type</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                </tr>
+            <div class="recipe-cards-container">
+                <!-- Fetch and display recipes dynamically -->
+                <?php
+                require_once('database.php');
+                $db = db_connect();
+                $user_id = $_SESSION['user_id'];
+                $sql = "SELECT * FROM recipes WHERE UserID = '$user_id' ORDER BY TimeToCook ASC";
+                $result_set = mysqli_query($db, $sql);
 
-                <!-- Process and display results -->
-                <?php while ($recipe = mysqli_fetch_assoc($result_set)) { ?>
-                    <tr>
-                        <!-- <td><?php echo $recipe['RecipeID']; ?></td> -->
-                        <td><?php echo $recipe['Title']; ?></td>
-                        <td><?php echo $recipe['TimeToCook']; ?></td>
-                        <td><?php echo $recipe['Vegetarian'] ? "Yes" : "No"; ?></td>
-                        <td><?php echo $recipe['Type']; ?></td>
-                        <!-- Send the RecipeID as a parameter -->
-                        <td><a class="action" href="<?php echo "show.php?id=" . $recipe['RecipeID']; ?>">View</a></td>   <!-- REDIRECTS TO show.php -->
-                        <td><a class="action" href="<?php echo "edit.php?id=" . $recipe['RecipeID']; ?>">Edit</a></td>  <!-- REDIRECTS TO edit.php -->
-                        <td><a class="action" href="<?php echo "delete.php?id=" . $recipe['RecipeID']; ?>">Delete</a></td> <!-- REDIRECTS TO delete.php -->
-                    </tr>
+
+                while ($recipe = mysqli_fetch_assoc($result_set)) { ?>
+                    <div class="recipe-card" onclick="window.location.href='show.php?id=<?php echo $recipe['RecipeID']; ?>'">
+                        <!-- Placeholder image for the recipe -->
+                        <div class="recipe-image">
+                            <img src="images/login-photo.jpg" alt="Recipe Image">
+                        </div>
+                        
+                        <h2 class="recipe-title"><?php echo htmlspecialchars($recipe['Title']); ?> </h2>
+                        <p class="recipe-time">Time to Cook: <?php echo htmlspecialchars($recipe['TimeToCook']); ?> mins</p>
+                        <p class="recipe-vegetarian">
+                            <?php echo $recipe['Vegetarian'] ? "Vegetarian" : "Non-Vegetarian"; ?>
+                        </p>
+                        <p class="recipe-type">Type: <?php echo htmlspecialchars($recipe['Type']); ?></p>
+                        <div class="card-actions">
+                            <!-- <a class="btn btn-small" href="show.php?id=<?php echo $recipe['RecipeID']; ?>">View</a> -->
+                            <a class="btn btn-small" href="edit.php?id=<?php echo $recipe['RecipeID']; ?>">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit  
+                            </a>
+                            <a class="btn btn-danger" href="delete.php?id=<?php echo $recipe['RecipeID']; ?>">
+                                <i class="fa-solid fa-trash-can"></i> Delete
+                            </a>
+                        </div>
+                    </div>
                 <?php } ?>
-            </table>
-            
+            </div>
+        </div>
+    </div>
 
-            <!-- Include the footer -->
-            <?php include("footer.php"); ?>
-
+    <footer class="footer">
+        <?php include("footer.php"); ?>
+    </footer>
 </body>
 
 </html>

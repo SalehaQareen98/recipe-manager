@@ -13,8 +13,8 @@
             <h1>Bon Appétit</h1>
         </div>
 
-        <form class="search-bar" action="index.php" method="POST">
-            <input type="text" name="search" placeholder="Search recipes..." required>
+        <form class="search-bar" action="search.php" method="POST">
+            <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
             <button type="submit">Search</button>
         </form>
 

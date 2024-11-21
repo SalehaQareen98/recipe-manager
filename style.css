@@ -22,11 +22,11 @@ body {
 }
 
 .login-page{
-    background-image: url('images/login-photo-2.jpg'); /* Replace with your image path */
+    background-image: url('images/login-photo.jpg'); /* Replace with your image path */
 }
 
 .signup-page{
-    background-image: url('images/login-photo.jpg'); /* Replace with your image path */
+    background-image: url('images/signup-photo.jpg'); /* Replace with your image path */
 }
 
     /* Centered container styling */

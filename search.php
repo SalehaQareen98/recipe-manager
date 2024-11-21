@@ -54,7 +54,7 @@ if (!empty($keyword)) {
 //     // Display a message when the search keyword is empty
 //     echo "<p>Please enter a keyword to search for recipes.</p>";
 // }  not required since are search input feild is required. 
-
+}
 // Close the database connection
 db_disconnect($db);
 ?>

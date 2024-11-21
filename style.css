@@ -121,6 +121,25 @@ body {
         background-color: #1f8d93;
         transform: translateY(-3px);
     }
+
+    .back-button {
+        width: 100%;
+        padding: 12px;
+        background-color: #6c757d; /* Gray color */
+        border: none;
+        color: white;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Hover effect for the Back button */
+    .back-button:hover {
+        background-color: #5a6268; /* Darker gray shade */
+        transform: translateY(-3px);
+    }
     
     /* Styling for the labels */
     .label {

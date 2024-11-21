@@ -1,0 +1,161 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background image for the page */
+body {
+    font-family: 'Roboto', sans-serif; 
+}
+
+.wrapper-container {
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.login-page{
+    background-image: url('images/login-photo-2.jpg'); /* Replace with your image path */
+}
+
+.signup-page{
+    background-image: url('images/login-photo.jpg'); /* Replace with your image path */
+}
+
+    /* Centered container styling */
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Form box with a solid background and opacity */
+    .form-box {
+        background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for background */
+        padding: 40px;
+        width: 100%;
+        max-width: 400px;
+        border-radius: 8px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    
+    /* Title of the form */
+    .form-title {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+    
+    /* Error message styling */
+    .error {
+        color: red;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    /* Styling for input fields */
+    .input {
+        width: 100%;
+        padding: 12px;
+        margin: 12px 0;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        color: #333;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease;
+    }
+    
+    /* Focus state for inputs */
+    .input:focus {
+        outline-color: #FF5733;
+        border-color: #FF5733;
+    }
+    
+    /* Button styles */
+    .login-button {
+        width: 100%;
+        padding: 14px;
+        background-color: #FF5733; /* Coral-like color for the button */
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    /* Hover effect for the submit button */
+    .login-button:hover {
+        background-color: #FF7F50; /* Slightly darker shade */
+        transform: translateY(-3px);
+    }
+    
+    /* Style for the Sign-Up button */
+    .signup-button {
+        width: 100%;
+        padding: 12px;
+        background-color: #0f6469;
+        border: none;
+        color: white;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Hover effect for the Sign-Up button */
+    .signup-button:hover {
+        background-color: #1f8d93;
+        transform: translateY(-3px);
+    }
+    
+    /* Styling for the labels */
+    .label {
+        font-size: 1rem;
+        text-align: left;
+        display: block;
+        color: #444;
+        margin-bottom: 5px;
+    }
+
+    /* Checkbox styling */
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.form-checkbox-input {
+    margin-right: 10px;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .form-box {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}

@@ -12,11 +12,31 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <link rel="stylesheet" href="style.css" />
     <title>Online Recipe Manager</title>
-    <a href="login.php">Login</a> | <a href="registration.php">Create an Account</a>
+    <a href="index.php">Login</a> | <a href="registration.php">Create an Account</a>
 
 </head>
 
 <body>
+<div class="seacrh">
+            <form class="search-bar" action="search.php" method="POST">
+                <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="filter-dropdown">
+            <form action="filter.php" method="GET">
+                <select id="filter" name="filter">
+                    <option value="">Filter Recipes</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                    <option value="15">Max Time: 15 minutes</option>
+                    <option value="30">Max Time: 30 minutes</option>
+                    <option value="60">Max Time: 1 hour</option>
+                </select>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
     <!-- Include the header -->
     <?php include("header.php");
     // Connect to the database

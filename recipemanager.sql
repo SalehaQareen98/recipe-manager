@@ -28,6 +28,7 @@ ADD COLUMN `Name` VARCHAR(100) NOT NULL AFTER `UserID`; -- @zahra: copy/paste an
 UPDATE `users` SET `Name` = 'Rob' WHERE `UserID` = 1;  --  @zahra: copy/paste and alter on your end too
 UPDATE `users` SET `Name` = 'Steve' WHERE `UserID` = 2; -- @zahra: copy/paste and update fields on your end too
 
+ALTER TABLE recipes CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci; -- @zahra: copy/paste to remove case sensitvity when using search
 
 -- Create the recipes table
 CREATE TABLE IF NOT EXISTS `recipes` (

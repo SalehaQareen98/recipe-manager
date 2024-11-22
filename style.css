@@ -5,23 +5,25 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
+    min-height: 90%;
     display: flex;
     flex-direction: column;
     font-family: Arial, sans-serif;
 }
 
 
-.content { /*ensure main content fills space so that footer is at the bottom*/
+.content {
+    /*ensure main content fills space so that footer is at the bottom*/
     flex: 1;
 }
 
 /* Background image for the page */
 body {
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -33,6 +35,7 @@ body {
     background-color: #000000;
     padding: 15px;
 }
+
 .header-container {
     display: flex;
     flex-direction: row;
@@ -63,7 +66,7 @@ body {
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 10px; 
+    margin-right: 10px;
     vertical-align: middle;
 }
 
@@ -80,56 +83,80 @@ footer {
 
 
 
-.login-page{
-    background-image: url('images/login-photo.jpg'); /* Replace with your image path */
+.login-page {
+    background-image: url('images/login-photo.jpg');
+    /* Replace with your image path */
 }
 
-.signup-page{
-    background-image: url('images/signup-photo.jpg'); /* Replace with your image path */
+.signup-page {
+    background-image: url('images/signup-photo.jpg');
+    /* Replace with your image path */
 }
 
-.edit-page{
-    background-image: url('images/edit-page-photo.jpg'); /* Replace with your image path */
+.edit-page {
+    background-image: url('images/edit-page-photo.jpg');
+    /* Replace with your image path */
 }
 
 .create-page {
-    background-image: url('images/create-page.jpg'); /* Replace with your image path */
+    background-image: url('images/create-page.jpg');
+    /* Replace with your image path */
+}
+
+.show-page {
+    background-image: url('images/show-page.jpg');
+    /* Replace with your image path */
 }
 
 /* General styles for pages with background images */
-.login-page, .signup-page, .edit-page, .create-page {
+.login-page,
+.signup-page,
+.edit-page,
+.create-page,
+.show-page {
     position: relative;
     background-size: cover;
     background-position: center;
-    height: 100vh; /* Full viewport height */
-    color: white; /* Ensures text contrasts with the background */
-    overflow: hidden; /* Prevents content from spilling */
+    height: 100vh;
+    /* Full viewport height */
+    color: white;
+    /* Ensures text contrasts with the background */
+    overflow: hidden;
+    /* Prevents content from spilling */
 }
 
 /* Overlay styles */
-.login-page .overlay, 
-.signup-page .overlay, 
-.edit-page .overlay, 
-.create-page .overlay {
+.login-page .overlay,
+.signup-page .overlay,
+.edit-page .overlay,
+.create-page .overlay,
+.show-page .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-    pointer-events: none; /* Ensures the overlay doesn’t block interactions */
-    z-index: 1; /* Places the overlay above the background but below content */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black overlay with 50% opacity */
+    pointer-events: none;
+    /* Ensures the overlay doesn’t block interactions */
+    z-index: 1;
+    /* Places the overlay above the background but below content */
 }
 
 /* Content container styles */
-.login-page .container, 
-.signup-page .container, 
-.edit-page .container, 
-.create-page .container {
+.login-page .container,
+.signup-page .container,
+.edit-page .container,
+.create-page .container,
+.show-page .container {
     position: relative;
-    z-index: 2; /* Places the content above the overlay */
-    text-align: center; /* Optional: Center-align text/forms */
-    padding: 20px; /* Optional: Add padding for spacing */
+    z-index: 2;
+    /* Places the content above the overlay */
+    text-align: center;
+    /* Optional: Center-align text/forms */
+    padding: 20px;
+    /* Optional: Add padding for spacing */
 }
 
 
@@ -138,16 +165,21 @@ footer {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%; /* Match the viewport height */
+    height: 100%;
+    /* Match the viewport height */
     padding: 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    overflow-y: auto;
+    /* Allow vertical scrolling if content overflows */
 }
 
 .wrapper-container {
-    background-size: cover; /* Ensures the image covers the entire viewport */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: cover;
+    /* Ensures the image covers the entire viewport */
+    background-position: center;
+    /* Centers the image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,7 +191,8 @@ footer {
 
 
 .form-box {
-    background-color: rgba(255, 255, 255); /* Slight transparency */
+    background-color: rgba(255, 255, 255);
+    /* Slight transparency */
     padding: 40px;
     width: 90%;
     max-width: 400px;
@@ -167,116 +200,138 @@ footer {
     border-radius: 8px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     text-align: center;
-    overflow-y: auto; 
+    overflow-y: auto;
     box-sizing: border-box;
 }
-    
-    /* Title of the form */
-    .form-title {
-        font-size: 2.5rem;
-        color: #333;
-        margin-bottom: 20px;
-        font-weight: 700;
-    }
-    
-    /* Error message styling */
-    .error {
-        color: red;
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-    
-    /* Styling for input fields */
-    .input, select, .textbox {
-        width: 100%;
-        padding: 12px;
-        margin: 12px 0;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        font-size: 1rem;
-        color: #333;
-        background-color: #f9f9f9;
-        transition: border-color 0.3s ease;
-    }
 
-    textarea {
-        resize: vertical;
-    }
-    
-    /* Focus state for inputs */
-    .input:focus {
-        outline-color: #FF5733;
-        border-color: #FF5733;
-    }
-    
-    /* Button styles */
-    .login-button {
-        width: 100%;
-        padding: 14px;
-        background-color: #FF5733; /* Coral-like color for the button */
-        border: none;
-        color: white;
-        font-size: 1.2rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    /* Hover effect for the submit button */
-    .login-button:hover {
-        background-color: #FF7F50; /* Slightly darker shade */
-        transform: translateY(-3px);
-    }
-    
-    /* Style for the Sign-Up button */
-    .signup-button {
-        width: 100%;
-        padding: 12px;
-        background-color: #0f6469;
-        border: none;
-        color: white;
-        font-size: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: all 0.3s ease;
-    }
-    
-    /* Hover effect for the Sign-Up button */
-    .signup-button:hover {
-        background-color: #1f8d93;
-        transform: translateY(-3px);
-    }
+/* Title of the form */
+.form-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
 
-    .back-button {
-        width: 100%;
-        padding: 12px;
-        background-color: #6c757d; /* Gray color */
-        border: none;
-        color: white;
-        font-size: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: all 0.3s ease;
-    }
-    
-    /* Hover effect for the Back button */
-    .back-button:hover {
-        background-color: #5a6268; /* Darker gray shade */
-        transform: translateY(-3px);
-    }
-    
-    /* Styling for the labels */
-    .label {
-        font-size: 1rem;
-        text-align: left;
-        display: block;
-        color: #444;
-        margin-bottom: 5px;
-    }
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
 
-    /* Checkbox styling */
+/* Styling for input fields */
+.input,
+select,
+.textbox {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Focus state for inputs */
+.input:focus {
+    outline-color: #FF5733;
+    border-color: #FF5733;
+}
+
+/* Button styles */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #FF5733;
+    /* Coral-like color for the button */
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+.login-button:hover {
+    background-color: #FF7F50;
+    /* Slightly darker shade */
+    transform: translateY(-3px);
+}
+
+/* Style for the Sign-Up button */
+.signup-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0f6469;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the Sign-Up button */
+.signup-button:hover {
+    background-color: #1f8d93;
+    transform: translateY(-3px);
+}
+
+.back-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the Back button */
+.back-button:hover {
+    background-color: #5a6268;
+    /* Darker gray shade */
+    transform: translateY(-3px);
+}
+
+.back-to-home-btn {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: white;
+    padding: 5px 10px;
+    border: white;
+    border-radius: 4px;
+    background-color: gray;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.back-to-home:hover {
+    background-color: rgb(65, 64, 64);
+    color: #fff;
+}
+
+/* Styling for the labels */
+.label {
+    font-size: 1rem;
+    text-align: left;
+    display: block;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+/* Checkbox styling */
 .form-checkbox {
     display: flex;
     align-items: center;
@@ -286,6 +341,96 @@ footer {
 
 .form-checkbox-input {
     margin-right: 10px;
+}
+
+/* Show recipe page styles */
+.recipe-details-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.headr-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    gap: 20px;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.recipe-title {
+    font-size: 2rem;
+    margin: 0;
+    color: #333;
+    text-align: center;
+}
+
+
+/* Recipe Details */
+.recipe-details {
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.recipe-details h3 {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.recipe-details p {
+    margin-left: 20px;
+    color: #666;
+}
+
+/* Action Buttons */
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #28a745;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
 }
 
 
@@ -310,8 +455,17 @@ footer {
         align-items: center;
         gap: 10px;
     }
+
     .header-container {
         flex-direction: column;
         gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .btns-container {
+        flex-direction: column;
+        gap: 20px;
     }
 }

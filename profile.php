@@ -43,10 +43,10 @@ db_disconnect($conn);
     
 </head>
 <body>
-    <div class="profile">
+    <div>
         <h3><?php echo htmlspecialchars($name); ?></h3>
         <p>Email: <?php echo htmlspecialchars($email); ?></p>
-        <a href="home.php?logout=<?php echo $userId; ?>" class="delete-btn">Logout</a>
+        <a href="home.php?logout=<?php echo $userId; ?>">Logout</a>
     </div>
 </body>
 </html>

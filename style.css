@@ -81,7 +81,86 @@ footer {
     font-size: 14px;
 }
 
+/* Overview page styles */
+.overview-container {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
+}
 
+.img-section {
+    margin-bottom: 30px;
+}
+
+.overview-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.img-title {
+    font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+.img-description {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.features-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.features-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.features-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features-list li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.features-list strong {
+    color: #2c3e50;
+}
+
+.recipe-overview-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.recipe-overview-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.cta-section h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
 
 .login-page {
     background-image: url('images/login-photo.jpg');
@@ -432,6 +511,24 @@ textarea {
 
 .btn-delete:hover {
     background-color: #c82333;
+}
+
+.btn-signup {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-signup:hover {
+    background-color: #27ae60;
+}
+
+.btn-login {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #2980b9;
 }
 
 

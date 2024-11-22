@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="wrapper-container edit-page">
     <div class="overlay"></div>
         <div class="container">
-            <div class="form-box">
+            <div class="form-box">              
                 <h1 class="form-title">Edit Recipe</h1>
                 <form action="<?php echo 'edit.php?id=' . $result['RecipeID']; ?>" method="post">
 
@@ -118,6 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div id="operations">
                         <button class="signup-button" type="submit">Save Changes</button>
+                        <button type="button" class="back-button" onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
                     </div>
                 </form>
             </div>

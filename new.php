@@ -8,26 +8,25 @@ if (!isset($_SESSION['user_id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Recipe</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <?php include 'header.php'; ?>
 
     <div class="wrapper-container create-page">
-    <div class="overlay"></div>
+        <div class="overlay"></div>
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">Create New Recipe</h1>
 
                 <form action="create.php" method="POST">
-
-                    <h2>Recipe Details</h2>
-
                     <div class="form-group">
                         <label class="label" for="title">Recipe Title</label>
                         <input class="input" type="text" id="title" name="title" required />
@@ -68,6 +67,8 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div id="operations">
                         <button class="signup-button" type="submit">Create Recipe</button>
+                        <button type="button" class="back-button"
+                            onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
                     </div>
 
                 </form>
@@ -80,4 +81,5 @@ if (!isset($_SESSION['user_id'])) {
     </footer>
 
 </body>
+
 </html>

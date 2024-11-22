@@ -329,6 +329,7 @@ textarea {
     display: block;
     color: #444;
     margin-bottom: 5px;
+    font-weight: 600;
 }
 
 /* Checkbox styling */

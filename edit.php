@@ -43,61 +43,84 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<div id="content">
-    <a class="back-link" href="home.php">Home</a>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="page edit">
-        <h1>Edit Recipe</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        <form action="<?php echo 'edit.php?id=' . $result['RecipeID']; ?>" method="post">
-            <dl>
-                <dt>Title</dt>
-                <dd><input type="text" name="title" value="<?php echo $result['Title']; ?>" required /></dd>
-            </dl>
-            <dl>
-                <dt>Time to Cook</dt>
-                <dd><input type="text" name="time_to_cook" value="<?php echo $result['TimeToCook']; ?>" required /></dd>
-            </dl>
-            <dl>
-                <dt>Is Vegetarian</dt>
-                <dd>
-                    <select name="vegetarian" required>
-                        <option value="1" <?php echo $result['Vegetarian'] == 1 ? 'selected' : ''; ?>>Yes</option>
-                        <option value="0" <?php echo $result['Vegetarian'] == 0 ? 'selected' : ''; ?>>No</option>
-                    </select>
-                </dd>
-            </dl>
-            <dl>
-                <dt>Ingredients</dt>
-                <dd><textarea name="ingredients" rows="5" required><?php echo $result['Ingredients']; ?></textarea></dd>
-            </dl>
-            <dl>
-                <dt>Directions</dt>
-                <dd><textarea name="directions" rows="10" required><?php echo $result['Directions']; ?></textarea></dd>
-            </dl>
-            <dl>
-                <dt>Type</dt>
-                <dd>
-                    <select name="type" required>
-                        <option value="Appetizer" <?php echo $result['Type'] == 'Appetizer' ? 'selected' : ''; ?>>
-                            Appetizer</option>
-                        <option value="Main Course" <?php echo $result['Type'] == 'Main Course' ? 'selected' : ''; ?>>Main
-                            Course</option>
-                        <option value="Dessert" <?php echo $result['Type'] == 'Dessert' ? 'selected' : ''; ?>>Dessert
-                        </option>
-                        <option value="Drinks" <?php echo $result['Type'] == 'Drinks' ? 'selected' : ''; ?>>Drinks
-                        </option>
-                    </select>
-                </dd>
-            </dl>
+<body>
+    <div class="wrapper-container edit-page">
+        <div class="container">
+            <div class="form-box">
+                <h1 class="form-title">Edit Recipe</h1>
+                <form action="<?php echo 'edit.php?id=' . $result['RecipeID']; ?>" method="post">
 
-            <div id="operations">
-                <input type="submit" value="Edit Recipe" />
+                    <h2>Recipe Details</h2>
+
+                    <div class="form-group">
+                        <label class="label" for="title">Title</label>
+                        <input class="input" type="text" id="title" name="title" value="<?php echo $result['Title']; ?>"
+                            required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" for="time_to_cook">Time to Cook</label>
+                        <input class="input" type="text" id="time_to_cook" name="time_to_cook"
+                            value="<?php echo $result['TimeToCook']; ?>" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" for="vegetarian">Is Vegetarian</label>
+                        <select class="select" id="vegetarian" name="vegetarian" required>
+                            <option value="1" <?php echo $result['Vegetarian'] == 1 ? 'selected' : ''; ?>>Yes</option>
+                            <option value="0" <?php echo $result['Vegetarian'] == 0 ? 'selected' : ''; ?>>No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" for="ingredients">Ingredients</label>
+                        <textarea class="textbox" id="ingredients" name="ingredients" rows="5"
+                            required><?php echo $result['Ingredients']; ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" for="directions">Directions</label>
+                        <textarea class="textbox" id="directions" name="directions" rows="10"
+                            required><?php echo $result['Directions']; ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label" for="type">Type</label>
+                        <select class="select" id="type" name="type" required>
+                            <option value="Appetizer" <?php echo $result['Type'] == 'Appetizer' ? 'selected' : ''; ?>>
+                                Appetizer</option>
+                            <option value="Main Course" <?php echo $result['Type'] == 'Main Course' ? 'selected' : ''; ?>>
+                                Main Course</option>
+                            <option value="Dessert" <?php echo $result['Type'] == 'Dessert' ? 'selected' : ''; ?>>Dessert
+                            </option>
+                            <option value="Drinks" <?php echo $result['Type'] == 'Drinks' ? 'selected' : ''; ?>>Drinks
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div id="operations">
+                        <button class="signup-button" type="submit">Save Changes</button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
-</div>
 
 
+        <footer>
+            <?php include 'footer.php'; ?>
+        </footer>
+</body>
 
-<?php include 'footer.php'; ?>
+</html>

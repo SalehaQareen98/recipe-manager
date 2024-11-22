@@ -79,6 +79,30 @@ footer {
 }
 
 
+
+.login-page{
+    background-image: url('images/login-photo.jpg'); /* Replace with your image path */
+}
+
+.signup-page{
+    background-image: url('images/signup-photo.jpg'); /* Replace with your image path */
+}
+
+.edit-page{
+    background-image: url('images/edit-page-photo.jpg'); /* Replace with your image path */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Match the viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
+}
+
 .wrapper-container {
     background-size: cover; /* Ensures the image covers the entire viewport */
     background-position: center; /* Centers the image */
@@ -90,33 +114,21 @@ footer {
     color: #fff;
 }
 
-.login-page{
-    background-image: url('images/login-photo.jpg'); /* Replace with your image path */
-}
 
-.signup-page{
-    background-image: url('images/signup-photo.jpg'); /* Replace with your image path */
-}
 
-    /* Centered container styling */
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-    
-    /* Form box with a solid background and opacity */
-    .form-box {
-        background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for background */
-        padding: 40px;
-        width: 100%;
-        max-width: 400px;
-        border-radius: 8px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
+
+.form-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow-y: auto; 
+    box-sizing: border-box;
+}
     
     /* Title of the form */
     .form-title {
@@ -134,7 +146,7 @@ footer {
     }
     
     /* Styling for input fields */
-    .input {
+    .input, select, .textbox {
         width: 100%;
         padding: 12px;
         margin: 12px 0;
@@ -144,6 +156,10 @@ footer {
         color: #333;
         background-color: #f9f9f9;
         transition: border-color 0.3s ease;
+    }
+
+    textarea {
+        resize: vertical;
     }
     
     /* Focus state for inputs */

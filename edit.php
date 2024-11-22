@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -12,7 +12,7 @@ include 'header.php';
 
 // Check if the RecipeID is provided
 if (!isset($_GET['id'])) {
-    header("Location: index.php"); // Redirect to index if no ID is provided
+    header("Location: login.php"); // Redirect to index if no ID is provided
 }
 
 $id = $_GET['id']; // Get the RecipeID from the URL

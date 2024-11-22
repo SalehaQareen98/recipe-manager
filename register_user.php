@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the query
     if (mysqli_query($db, $sql)) {
-        echo "<p>Registration successful! You can now <a href='index.php'>log in</a>.</p>";
+        echo "<p>Registration successful! You can now <a href='login.php'>log in</a>.</p>";
     } else {
         // Handle errors (e.g., duplicate email)
         if (mysqli_errno($db) == 1062) {

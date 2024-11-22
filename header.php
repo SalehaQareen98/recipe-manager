@@ -26,7 +26,7 @@
             </div>
     
             <div class="Logout">
-                <a href="index.php" class="nav-link">Logout</a> 
+                <a href="login.php" class="nav-link">Logout</a> 
             </div>
         </div>   
     </header>

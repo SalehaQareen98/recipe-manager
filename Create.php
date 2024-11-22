@@ -5,7 +5,7 @@ include "header.php"; // Include the header for consistent layout
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php"); // Redirect to login page
+    header("Location: login.php"); // Redirect to login page
     exit;
 }
 

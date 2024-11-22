@@ -4,7 +4,7 @@ require_once('database.php');
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -12,7 +12,7 @@ $db = db_connect();
 
 // Check if the recipe ID is set
 if (!isset($_GET['id'])) {
-    header("Location: index.php");
+    header("Location: login.php");
     exit;
 }
 

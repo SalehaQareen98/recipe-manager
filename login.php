@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php endif; ?>
 
                 <!-- Login form for user authentication -->
-                <form method="POST" action="index.php">
+                <form method="POST" action="login.php">
                     <!-- Email input field -->
                     <div class="form-group">
                         <label class="label" for="email">Email:</label>

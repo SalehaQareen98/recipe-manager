@@ -21,27 +21,37 @@ body {
     padding: 20px;
 }
 
-.title-image-container {
+/* .title-image-container {
     width: 100%;
-    height: 500px; /* Adjust height as needed */
-    margin-bottom: 20px; /* Space between image and content */
+    height: 500px;
+    margin-bottom: 20px;
 }
 
 .title-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures image covers the space while maintaining aspect ratio */
-}
+    object-fit: cover;
+} */
+.title-image-container {
+    position: relative;
+    display: inline-block; /* Ensures the container size matches the image */
+  }
+
+  .title-img {
+    display: block;
+    width: 100%; /* Ensure the image scales properly */
+    height: auto; /* Maintain aspect ratio */
+  }
 
 .title-text {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the text */
+    transform: translate(-50%, -50%);
     color: white;
     text-align: center;
     font-size: 30px;
-}
+  }
 
 /* Search and Filter Section */
 .search-filter-section {
@@ -62,7 +72,7 @@ body {
     max-width: 400px;
 }
 
-.search-bar button {
+.orange-button {
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
@@ -73,8 +83,21 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.search-bar button:hover {
+.orange-button:hover {
     background-color: #FF7F50;
+}
+
+#search-form, #filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 300px;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
 }
 
 .filter-dropdown select {
@@ -84,7 +107,7 @@ body {
     border-radius: 5px;
 }
 
-.filter-dropdown button {
+.green-button {
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
@@ -95,7 +118,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.filter-dropdown button:hover {
+.green-button:hover {
     background-color: #1f8d93;
 }
 
@@ -225,11 +248,6 @@ body {
     background-color: #b71c1c;
 }
 
-#search-form {
-    display: flex;
-    gap: 3px
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .search-filter-section {
@@ -239,10 +257,24 @@ body {
 
     .recipe-cards-container {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 
     .nav-bar {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+@media (max-width: 480px) {
+
+    .image-title {
+        font-size: 20px;
+    }
+
+    .img-desc {
+        font-size: 18px;
+    }
+
+    
 }

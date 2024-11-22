@@ -27,15 +27,18 @@ if (!isset($_SESSION['user_id'])) {
             <div class="title-image-container">
                 <img src="images/title-img.jpg" alt="Recipe Image" class="title-img">
                 <div class="title-text">
-                    <h1>Welcome to Recipe Manager</h1>
-                    <p>Explore delicious recipes</p>
+                    <h1 class="image-title">Welcome to Recipe Manager</h1>
+                    <p class="img-desc">Explore delicious recipes</p>
                 </div>
             </div>
 
             <div class="search-filter-section">
                 <form id="search-form" class="search-bar" action="search.php" method="POST">
                     <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <div class="button-wrapper">
+                        <button type="submit" class="orange-button">Search</button>
+                        <button type="reset" class="green-button" onclick="window.location.href='home.php'">Reset</button>
+                    </div>
                 </form>
 
                 <form id="filter-form" class="filter-dropdown" action="filter.php" method="GET">
@@ -47,7 +50,10 @@ if (!isset($_SESSION['user_id'])) {
                         <option value="30">Max Time: 30 minutes</option>
                         <option value="60">Max Time: 1 hour</option>
                     </select>
-                    <button type="submit" class="btn btn-secondary">Apply</button>
+                    <div class="button-wrapper">
+                        <button type="submit" class="orange-button">Apply</button>
+                        <button type="reset" class="green-button" onclick="window.location.href='home.php'">Reset</button>
+                    </div>
                 </form>
             </div>
 

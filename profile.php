@@ -40,59 +40,13 @@ db_disconnect($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Card</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .profile {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .profile h3 {
-            margin: 10px 0;
-            font-size: 24px;
-        }
-        .profile p {
-            margin: 5px 0;
-            color: #555;
-        }
-        .profile a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 15px;
-            color: #fff;
-            background-color: #007BFF;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .profile a:hover {
-            background-color: #0056b3;
-        }
-        .delete-btn {
-            background-color: #FF3D00;
-        }
-        .delete-btn:hover {
-            background-color: #D32F2F;
-        }
-    </style>
+    
 </head>
 <body>
-    <div class="profile">
+    <div>
         <h3><?php echo htmlspecialchars($name); ?></h3>
         <p>Email: <?php echo htmlspecialchars($email); ?></p>
-        <a href="home.php?logout=<?php echo $userId; ?>" class="delete-btn">Logout</a>
+        <a href="home.php?logout=<?php echo $userId; ?>">Logout</a>
     </div>
 </body>
 </html>

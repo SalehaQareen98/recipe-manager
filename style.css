@@ -10,6 +10,31 @@ body {
     font-family: 'Roboto', sans-serif; 
 }
 
+.main-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.title-container {
+    display: flex;
+}
+
+.logo-image img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px; 
+    vertical-align: middle;
+}
+
 .wrapper-container {
     background-size: cover; /* Ensures the image covers the entire viewport */
     background-position: center; /* Centers the image */
@@ -176,5 +201,16 @@ body {
     button {
         padding: 10px;
         font-size: 1rem;
+    }
+
+    .main-header {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+    .header-container {
+        flex-direction: column;
+        gap: 5px;
     }
 }

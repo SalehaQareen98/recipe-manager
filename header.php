@@ -10,18 +10,25 @@
 
 <body>
     <header class="main-header">
-        <div class="title">
-            <a href="home.php" class="home-link">Home</a> <!-- Home link -->
+        <div class="title-container">
+            <div class="logo-image">
+                <img src="images/logo.jpg" alt="Recipe Image">
+            </div>
             <h1>Bon Appétit</h1>
         </div>
-
-
-
-        <div class="user-profile">
-            <a href="profile.php"> <!-- create profile/dashboard.php -->
-                <img src="profile-icon.png" alt="User Profile" class="profile-icon">
-            </a>
-        </div>
+        <div class="header-container">
+            <div class="title">
+                <a href="home.php" class="nav-link">Home</a> <!-- Home link --> 
+            </div>
+    
+            <div class="user-profile">
+                <a href="index.php" class="nav-link">Profile</a> <!-- create profile/dashboard.php -->
+            </div>
+    
+            <div class="Logout">
+                <a href="index.php" class="nav-link">Logout</a> 
+            </div>
+        </div>   
     </header>
 </body>
 

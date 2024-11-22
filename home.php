@@ -15,6 +15,10 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="homestyles.css">
 </head>
 <body>
+    <header class="header">
+        <?php include("header.php"); ?>
+    </header>
+    
     <div class="main-container">
         <div class="title-image-container">
             <img src="images/title-img.jpg" alt="Recipe Image" class="title-img">
@@ -84,6 +88,10 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <?php include("footer.php"); ?>
+    </footer>
 
     <script>
     // Handle the search form submission

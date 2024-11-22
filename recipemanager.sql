@@ -34,6 +34,8 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE -- Foreign key constraint
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=9;
 
+ALTER TABLE `recipes` MODIFY COLUMN `Image` VARCHAR(255);   --run this alter in db to change datatype
+
 -- Insert data into the recipes table
 INSERT INTO `recipes` (`RecipeID`, `Title`, `TimeToCook`, `Vegetarian`, `Ingredients`, `Directions`, `Type`, `UserID`, `Favourites`, `Image`) 
 VALUES

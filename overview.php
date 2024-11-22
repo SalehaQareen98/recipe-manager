@@ -7,7 +7,7 @@
         Recipe Manager is your personalized digital cookbook, where you can create, organize, and store your favorite recipes. Whether you are a home cook, a professional chef, or just someone who loves to explore the world of culinary arts, our platform makes it simple and fun to manage your recipes.
     </p>
     <p class="description">
-        Start creating your own recipes, categorize them by type, and access them anytime, anywhere. Enjoy the convenience of storing your recipes in one place and sharing them with friends and family!
+        Start creating your own recipes, categorize them by type, and access them anytime, anywhere!
     </p>
     <div>
         <a href="registration.html" class="cta-button">Sign Up</a>

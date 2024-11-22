@@ -64,6 +64,9 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </form>
             </div>
+            <div class="sub-heading">
+                <h1>My Recipes</h1>
+            </div>
 
 
 

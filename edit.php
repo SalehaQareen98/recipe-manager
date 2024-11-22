@@ -61,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <div class="wrapper-container edit-page">
+    <div class="overlay"></div>
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">Edit Recipe</h1>

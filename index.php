@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($db, $sql);
     // Check if a matching user record exists
     if ($result && mysqli_num_rows($result) > 0) {
-        
+
         // Fetch the user record as an associative array
         $user = mysqli_fetch_assoc($result);
 
@@ -43,22 +43,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = "No account found with this email. Please register.";
         header("location: registration.html");
     }
-}
-else {
+} else {
     echo "<script>console.log('Inside else' );</script>";
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <title>Login</title>
 </head>
+
 <body>
-    <div class="wrapper-container login-page" >
+    <div class="wrapper-container login-page">
+        <div class="overlay"></div>
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">Login</h1>
@@ -73,22 +75,26 @@ else {
                     <!-- Email input field -->
                     <div class="form-group">
                         <label class="label" for="email">Email:</label>
-                        <input class="input" type="email" id="email" name="email" required placeholder="Enter your email">
+                        <input class="input" type="email" id="email" name="email" required
+                            placeholder="Enter your email">
                     </div>
                     <!-- Password input field -->
                     <div class="form-group">
                         <label class="label" for="password">Password:</label>
-                        <input class="input" type="password" id="password" name="password" required placeholder="Enter your password">
+                        <input class="input" type="password" id="password" name="password" required
+                            placeholder="Enter your password">
                     </div>
                     <!-- Submit button to log in -->
                     <button class="login-button" type="submit">Login</button>
-                    
+
                     <!-- Sign-up redirect -->
-                    <button class="signup-button" type="button" onclick="window.location.href='registration.html';">Sign Up</button>
+                    <button class="signup-button" type="button" onclick="window.location.href='registration.html';">Sign
+                        Up</button>
                 </form>
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>

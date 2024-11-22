@@ -60,13 +60,18 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a shadow for extra clarity */
 }
 
+.sub-heading {
+    margin: 10px 0px;
+    font-size: 18px;
+}
+
 
 /* Search and Filter Section */
 .search-filter-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 20px;
     margin-bottom: 20px;
 }

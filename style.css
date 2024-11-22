@@ -96,6 +96,43 @@ footer {
     background-image: url('images/create-page.jpg'); /* Replace with your image path */
 }
 
+/* General styles for pages with background images */
+.login-page, .signup-page, .edit-page, .create-page {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full viewport height */
+    color: white; /* Ensures text contrasts with the background */
+    overflow: hidden; /* Prevents content from spilling */
+}
+
+/* Overlay styles */
+.login-page .overlay, 
+.signup-page .overlay, 
+.edit-page .overlay, 
+.create-page .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    pointer-events: none; /* Ensures the overlay doesn’t block interactions */
+    z-index: 1; /* Places the overlay above the background but below content */
+}
+
+/* Content container styles */
+.login-page .container, 
+.signup-page .container, 
+.edit-page .container, 
+.create-page .container {
+    position: relative;
+    z-index: 2; /* Places the content above the overlay */
+    text-align: center; /* Optional: Center-align text/forms */
+    padding: 20px; /* Optional: Add padding for spacing */
+}
+
+
 .container {
     display: flex;
     justify-content: center;

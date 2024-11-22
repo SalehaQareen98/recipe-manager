@@ -19,6 +19,7 @@ if (!isset($_SESSION['user_id'])) {
     <?php include 'header.php'; ?>
 
     <div class="wrapper-container create-page">
+    <div class="overlay"></div>
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">Create New Recipe</h1>

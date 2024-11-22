@@ -36,13 +36,7 @@ while ($recipe = mysqli_fetch_assoc($result_set)) {
     $response .= '<div class="recipe-card" onclick="window.location.href=\'show.php?id=' . $recipe['RecipeID'] . '\'">';
     $response .= '<div class="recipe-image"><img src="images/login-photo.jpg" alt="Recipe Image"></div>';
     $response .= '<h2 class="recipe-title">' . htmlspecialchars($recipe['Title']) . '</h2>';
-    $response .= '<p class="recipe-time">Time to Cook: ' . htmlspecialchars($recipe['TimeToCook']) . '</p>';
-    $response .= '<p class="recipe-vegetarian">' . ($recipe['Vegetarian'] ? 'Vegetarian' : 'Non-Vegetarian') . '</p>';
-    $response .= '<p class="recipe-type">Type: ' . htmlspecialchars($recipe['Type']) . '</p>';
-    $response .= '<div class="card-actions">';
-    $response .= '<a class="btn btn-small" href="edit.php?id=' . $recipe['RecipeID'] . '">Edit</a>';
-    $response .= '<a class="btn btn-danger" href="delete.php?id=' . $recipe['RecipeID'] . '">Delete</a>';
-    $response .= '</div></div>';
+    $response .= '</div>';
 }
 
 if (empty($response)) {

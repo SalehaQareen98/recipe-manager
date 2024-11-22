@@ -47,15 +47,6 @@ if (mysqli_num_rows($result_set) > 0) {
         $response .= '<img src="images/login-photo.jpg" alt="Recipe Image">';
         $response .= '</div>';
         $response .= '<h2 class="recipe-title">' . htmlspecialchars($recipe['Title']) . '</h2>';
-        $response .= '<p class="recipe-time">Time to Cook: ' . htmlspecialchars($recipe['TimeToCook']) . '</p>';
-        $response .= '<p class="recipe-vegetarian">' . ($recipe['Vegetarian'] ? "Vegetarian" : "Non-Vegetarian") . '</p>';
-        $response .= '<p class="recipe-type">Type: ' . htmlspecialchars($recipe['Type']) . '</p>';
-        $response .= '<div class="card-actions">';
-        $response .= '<a class="btn btn-small" href="edit.php?id=' . $recipe['RecipeID'] . '">';
-        $response .= '<i class="fa-solid fa-pen-to-square"></i> Edit</a>';
-        $response .= '<a class="btn btn-danger" href="delete.php?id=' . $recipe['RecipeID'] . '">';
-        $response .= '<i class="fa-solid fa-trash-can"></i> Delete</a>';
-        $response .= '</div>';
         $response .= '</div>';
     }
 } else {

@@ -91,19 +91,6 @@ if (!isset($_SESSION['user_id'])) {
                                 <img src="images/login-photo.jpg" alt="Recipe Image">
                             </div>
                             <h2 class="recipe-title"><?php echo htmlspecialchars($recipe['Title']); ?></h2>
-                            <p class="recipe-time">Time to Cook: <?php echo htmlspecialchars($recipe['TimeToCook']); ?> </p>
-                            <p class="recipe-vegetarian">
-                                <?php echo $recipe['Vegetarian'] ? "Vegetarian" : "Non-Vegetarian"; ?>
-                            </p>
-                            <p class="recipe-type">Type: <?php echo htmlspecialchars($recipe['Type']); ?></p>
-                            <div class="card-actions">
-                                <a class="btn btn-small" href="edit.php?id=<?php echo $recipe['RecipeID']; ?>">
-                                    <i class="fa-solid fa-pen-to-square"></i> Edit
-                                </a>
-                                <a class="btn btn-danger" href="delete.php?id=<?php echo $recipe['RecipeID']; ?>">
-                                    <i class="fa-solid fa-trash-can"></i> Delete
-                                </a>
-                            </div>
                         </div>
                     <?php }
 

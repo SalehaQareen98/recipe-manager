@@ -14,7 +14,7 @@
             <div class="logo-image">
                 <img src="images/logo.jpg" alt="Recipe Image">
             </div>
-            <h1>Bon Appétit</h1>
+            <h1 class="header-title">Bon Appétit</h1>
         </div>
         <div class="header-container">
             <div class="title">

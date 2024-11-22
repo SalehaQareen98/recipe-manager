@@ -26,6 +26,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="main-container">
             <div class="title-image-container">
                 <img src="images/title-img.jpg" alt="Recipe Image" class="title-img">
+                <div class="overlay"></div>
                 <div class="title-text">
                     <h1 class="image-title">Welcome to Recipe Manager</h1>
                     <p class="img-desc">Explore delicious recipes</p>
@@ -37,9 +38,15 @@ if (!isset($_SESSION['user_id'])) {
                     <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Search</button>
-                        <button type="reset" class="green-button" onclick="window.location.href='home.php'">Reset</button>
+                        <button type="reset" class="green-button"
+                            onclick="window.location.href='home.php'">Reset</button>
                     </div>
                 </form>
+
+                <div class="center-button">
+                    <button class="add-recipe-button" onclick="window.location.href='new.php'">Add
+                        Recipe</button>
+                </div>
 
                 <form id="filter-form" class="filter-dropdown" action="filter.php" method="GET">
                     <select id="filter" name="filter">
@@ -52,10 +59,13 @@ if (!isset($_SESSION['user_id'])) {
                     </select>
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Apply</button>
-                        <button type="reset" class="green-button" onclick="window.location.href='home.php'">Reset</button>
+                        <button type="reset" class="green-button"
+                            onclick="window.location.href='home.php'">Reset</button>
                     </div>
                 </form>
             </div>
+
+
 
             <div class="recipes-listing">
                 <!-- <h1 class="section-title">Your Recipes</h1>
@@ -63,13 +73,6 @@ if (!isset($_SESSION['user_id'])) {
                     <a class="btn btn-primary" href="new.php">Create New Recipe</a>
                 </div> -->
                 <div class="recipe-cards-container">
-                    <div class="recipe-card" onclick="window.location.href='new.php'">
-                        <div class="recipe-image">
-                            <img src="images/add-recipe-img.png" alt="Recipe Image">
-                        </div>
-                        <h2 class="recipe-title"> Add new Recipe</h2>
-                        <!-- <p class="recipe-time">Click card to add a new recipe</p> -->
-                    </div>
                     <?php
                     // PHP code to fetch and display recipes dynamically
                     require_once('database.php');
@@ -86,11 +89,13 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                             <h2 class="recipe-title"><?php echo htmlspecialchars($recipe['Title']); ?></h2>
                             <p class="recipe-time">Time to Cook: <?php echo htmlspecialchars($recipe['TimeToCook']); ?> </p>
-                            <p class="recipe-vegetarian"><?php echo $recipe['Vegetarian'] ? "Vegetarian" : "Non-Vegetarian"; ?></p>
+                            <p class="recipe-vegetarian">
+                                <?php echo $recipe['Vegetarian'] ? "Vegetarian" : "Non-Vegetarian"; ?>
+                            </p>
                             <p class="recipe-type">Type: <?php echo htmlspecialchars($recipe['Type']); ?></p>
                             <div class="card-actions">
                                 <a class="btn btn-small" href="edit.php?id=<?php echo $recipe['RecipeID']; ?>">
-                                    <i class="fa-solid fa-pen-to-square"></i> Edit  
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
                                 </a>
                                 <a class="btn btn-danger" href="delete.php?id=<?php echo $recipe['RecipeID']; ?>">
                                     <i class="fa-solid fa-trash-can"></i> Delete

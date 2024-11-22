@@ -32,6 +32,35 @@ $result = mysqli_fetch_assoc($result_set);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Details</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        async function confirmDelete(recipeID) {
+            // Display confirmation dialog
+            const userConfirmed = confirm("Are you sure you want to delete this recipe?");
+            if (!userConfirmed) return;
+
+            try {
+                // Send DELETE request using Fetch API
+                const response = await fetch("delete.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: `id=${recipeID}`,
+                });
+
+                if (response.ok) {
+                    alert("Recipe deleted successfully.");
+                    window.location.href = "home.php"; // Redirect after successful deletion
+                } else {
+                    const errorText = await response.text();
+                    alert("Error deleting recipe: " + errorText);
+                }
+            } catch (error) {
+                alert("An error occurred. Please try again.");
+                console.error("Error:", error);
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -49,13 +78,12 @@ $result = mysqli_fetch_assoc($result_set);
                             <a href="home.php" class="back-to-home-btn">Back to Home</a>
                             <div class="card-actions">
                                 <a href="edit.php?id=<?php echo $result['RecipeID']; ?>" class="btn btn-edit">Edit</a>
-                                <a href="delete.php?id=<?php echo $result['RecipeID']; ?>"
-                                    class="btn btn-delete">Delete</a>
+                                <!-- Call confirmDelete() on click -->
+                                <button class="btn btn-delete" onclick="confirmDelete(<?php echo $result['RecipeID']; ?>)">Delete</button>
                             </div>
                         </div>
                         <h1 class="recipe-title">Recipe: <?php echo htmlspecialchars($result['Title']); ?></h1>
                     </div>
-
 
                     <div class="recipe-details">
                         <h3>Type</h3>

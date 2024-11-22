@@ -1,70 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css" />
-    <title>Delete Recipe</title>
-</head>
-<body>
 <?php
 require_once('database.php');
-include "header.php";
 
 $db = db_connect();
 
-// Check if the RecipeID is provided
-if (!isset($_GET['id'])) {
-    header("Location: index.php"); // Redirect to index if no ID is provided
+// Check if the request method is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validate and sanitize input
+    $id = isset($_POST['id']) ? mysqli_real_escape_string($db, $_POST['id']) : null;
+
+    if ($id) {
+        // Execute the DELETE query
+        $sql = "DELETE FROM recipes WHERE RecipeID = '$id'";
+        $result = mysqli_query($db, $sql);
+
+        if ($result) {
+            // Send success response
+            http_response_code(200);
+            echo "Recipe deleted successfully.";
+        } else {
+            // Handle query error
+            http_response_code(500);
+            echo "Deletion failed: " . mysqli_error($db);
+        }
+    } else {
+        http_response_code(400);
+        echo "Invalid recipe ID.";
+    }
+    exit;
+} else {
+    http_response_code(405);
+    echo "Method not allowed.";
     exit;
 }
-
-$id = $_GET['id']; // Get the RecipeID from the URL
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Execute the DELETE query
-    $sql = "DELETE FROM recipes WHERE RecipeID = '$id'";
-    $result = mysqli_query($db, $sql);
-
-    if ($result) {
-        // Redirect to the main page after deletion
-        header("Location: home.php");
-        exit;
-    } else {
-        // Handle query error
-        die("Deletion failed: " . mysqli_error($db));
-    }
-} else {
-    // Fetch the recipe details to display for confirmation
-    $sql = "SELECT * FROM recipes WHERE RecipeID = '$id'";
-    $result_set = mysqli_query($db, $sql);
-
-    if (!$result_set) {
-        die("Database query failed: " . mysqli_error($db));
-    }
-
-    $result = mysqli_fetch_assoc($result_set);
-
-    if (!$result) {
-        die("No recipe found with ID: $id");
-    }
-}
-?>
-
-<div id="content">
-    <a class="back-link" href="home.php">&laquo; Home</a>
-
-    <div class="page delete">
-        <h1>Delete Recipe</h1>
-        <p>Are you sure you want to delete this recipe?</p>
-        <p class="item"><strong><?php echo htmlspecialchars($result['Title']); ?></strong></p>
-
-        <form action="<?php echo 'delete.php?id=' . $result['RecipeID']; ?>" method="post">
-            <div id="operations">
-                <input type="submit" name="commit" value="Delete Recipe" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<?php include 'footer.php'; ?>
-</body>
-</html>

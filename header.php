@@ -22,7 +22,7 @@
             </div>
     
             <div class="user-profile">
-                <a href="index.php" class="nav-link">Profile</a> <!-- create profile/dashboard.php -->
+                <a href="profile.php" class="nav-link">Profile</a> <!-- create profile/dashboard.php -->
             </div>
     
             <div class="Logout">

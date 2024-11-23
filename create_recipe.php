@@ -5,14 +5,14 @@ include "header.php"; // Include the header for consistent layout
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php"); // Redirect to login page
+    header("Location: login_page.php"); // Redirect to login page
     exit;
 }
 
 // Connect to the database
 $db = db_connect();
 
-// Handle form values sent by new.php
+// Handle form values sent by new_recipe_page.php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via POST
     // Capture form data
     $title = $_POST['title']; // Recipe title
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
     if ($result) {
         $id = mysqli_insert_id($db); // Get the ID of the newly inserted recipe
         // Redirect to the show page with the generated ID
-        header("Location: show.php?id=$id");
+        header("Location: view_recipe.php?id=$id");
         exit;
     } else {
         // Handle query error
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
     }
 } else {
     // Redirect to the form page if the request is not POST
-    header("Location: new.php");
+    header("Location: new_recipe_page.php");
     exit;
 }
 

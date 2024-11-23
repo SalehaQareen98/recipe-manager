@@ -18,7 +18,7 @@
         </div>
         <div class="header-container">
             <div class="title">
-                <a href="home.php" class="nav-link">Home</a> <!-- Home link --> 
+                <a href="home_page.php" class="nav-link">Home</a> <!-- Home link --> 
             </div>
     
             <div class="user-profile">
@@ -26,7 +26,7 @@
             </div>
     
             <div class="Logout">
-                <a href="login.php" class="nav-link">Logout</a> 
+                <a href="logout.php" class="nav-link">Logout</a> 
             </div>
         </div>   
     </header>

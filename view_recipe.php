@@ -4,7 +4,7 @@ require_once('database.php');
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login_page.php");
     exit;
 }
 
@@ -12,7 +12,7 @@ $db = db_connect();
 
 // Check if the recipe ID is set
 if (!isset($_GET['id'])) {
-    header("Location: login.php");
+    header("Location: login_page.php");
     exit;
 }
 
@@ -40,7 +40,7 @@ $result = mysqli_fetch_assoc($result_set);
 
             try {
                 // Send DELETE request using Fetch API
-                const response = await fetch("delete.php", {
+                const response = await fetch("delete_recipe.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -50,7 +50,7 @@ $result = mysqli_fetch_assoc($result_set);
 
                 if (response.ok) {
                     alert("Recipe deleted successfully.");
-                    window.location.href = "home.php"; // Redirect after successful deletion
+                    window.location.href = "home_page.php"; // Redirect after successful deletion
                 } else {
                     const errorText = await response.text();
                     alert("Error deleting recipe: " + errorText);
@@ -75,9 +75,9 @@ $result = mysqli_fetch_assoc($result_set);
                 <div class="form-box">
                     <div class="headr-container">
                         <div class="btns-container">
-                            <a href="home.php" class="back-to-home-btn">Back to Home</a>
+                            <a href="home_page.php" class="back-to-home-btn">Back to Home</a>
                             <div class="card-actions">
-                                <a href="edit.php?id=<?php echo $result['RecipeID']; ?>" class="btn btn-edit">Edit</a>
+                                <a href="edit_recipe.php?id=<?php echo $result['RecipeID']; ?>" class="btn btn-edit">Edit</a>
                                 <button class="btn btn-delete"
                                     onclick="confirmDelete(<?php echo $result['RecipeID']; ?>)">Delete</button>
                             </div>

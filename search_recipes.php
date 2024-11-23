@@ -2,7 +2,7 @@
 session_start(); // Start the session to access session variables
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login_page.php");
     exit;
 }
 
@@ -42,7 +42,7 @@ if (!$result_set) {
 // Generate the HTML for the recipes
 if (mysqli_num_rows($result_set) > 0) {
     while ($recipe = mysqli_fetch_assoc($result_set)) {
-        $response .= '<div class="recipe-card" onclick="window.location.href=\'show.php?id=' . $recipe['RecipeID'] . '\'">';
+        $response .= '<div class="recipe-card" onclick="window.location.href=\'view_recipe.php?id=' . $recipe['RecipeID'] . '\'">';
         $response .= '<div class="recipe-image">';
         $response .= '<img src="' . htmlspecialchars($recipe['Image']) . '" alt="Recipe Image">';
         $response .= '</div>';

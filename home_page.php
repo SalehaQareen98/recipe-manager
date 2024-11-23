@@ -1,7 +1,7 @@
 <!-- <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login_page.php");
     exit;
 }
 ?> -->
@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Manager</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="homestyles.css">
+    <link rel="stylesheet" href="home_page_styles.css">
 </head>
 
 <body>
@@ -34,21 +34,21 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div class="search-filter-section">
-                <form id="search-form" class="search-bar" action="search.php" method="POST">
+                <form id="search-form" class="search-bar" action="search_recipes.php" method="POST">
                     <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Search</button>
                         <button type="reset" class="green-button"
-                            onclick="window.location.href='home.php'">Reset</button>
+                            onclick="window.location.href='home_page.php'">Reset</button>
                     </div>
                 </form>
 
                 <div class="center-button">
-                    <button class="add-recipe-button" onclick="window.location.href='new.php'">Add
+                    <button class="add-recipe-button" onclick="window.location.href='new_recipe_page.php'">Add
                         Recipe</button>
                 </div>
 
-                <form id="filter-form" class="filter-dropdown" action="filter.php" method="GET">
+                <form id="filter-form" class="filter-dropdown" action="filter_recipes.php" method="GET">
                     <select id="filter" name="filter">
                         <option value="">Filter Recipes</option>
                         <option value="Vegetarian">Vegetarian</option>
@@ -60,7 +60,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Apply</button>
                         <button type="reset" class="green-button"
-                            onclick="window.location.href='home.php'">Reset</button>
+                            onclick="window.location.href='home_page.php'">Reset</button>
                     </div>
                 </form>
             </div>
@@ -71,10 +71,6 @@ if (!isset($_SESSION['user_id'])) {
 
 
             <div class="recipes-listing">
-                <!-- <h1 class="section-title">Your Recipes</h1>
-                <div class="actions">
-                    <a class="btn btn-primary" href="new.php">Create New Recipe</a>
-                </div> -->
                 <div class="recipe-cards-container">
                     <?php
                     // PHP code to fetch and display recipes dynamically
@@ -86,7 +82,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     while ($recipe = mysqli_fetch_assoc($result_set)) { ?>
                         <div class="recipe-card"
-                            onclick="window.location.href='show.php?id=<?php echo $recipe['RecipeID']; ?>'">
+                            onclick="window.location.href='view_recipe.php?id=<?php echo $recipe['RecipeID']; ?>'">
                             <div class="recipe-image">
                             <img src="<?php echo htmlspecialchars($recipe['Image']); ?>" alt="Recipe Image">
                             </div>
@@ -112,7 +108,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 const formData = new FormData(this); // Get form data
 
-                fetch('search.php', {
+                fetch('search_recipes.php', {
                     method: 'POST',
                     body: formData,
                 })
@@ -130,7 +126,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 const formData = new FormData(this); // Get form data
 
-                fetch('filter.php?' + new URLSearchParams(formData), {
+                fetch('filter_recipes.php?' + new URLSearchParams(formData), {
                     method: 'GET',
                 })
                     .then(response => response.text())

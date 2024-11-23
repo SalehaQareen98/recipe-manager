@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login_page.php");
     exit;
 }
 ?>
@@ -39,7 +39,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="form-box">
                 <h1 class="form-title">Create New Recipe</h1>
 
-                <form action="create.php" method="POST" enctype="multipart/form-data">
+                <form action="create_recipe.php" method="POST" enctype="multipart/form-data">
                     <!-- Image Upload and Preview -->
                     <div class="form-group">
                         <label class="label" for="recipe_image">Upload Recipe Image</label>
@@ -94,7 +94,7 @@ if (!isset($_SESSION['user_id'])) {
                     <!-- Buttons -->
                     <div id="operations">
                         <button class="signup-button" type="submit">Create Recipe</button>
-                        <button type="button" class="back-button" onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
+                        <button type="button" class="back-button" onclick="location.href='../recipe-manager/home_page.php'">Back to Home</button>
                     </div>
                 </form>
             </div>

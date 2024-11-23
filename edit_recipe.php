@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: login_page.php");
     exit;
 }
 
@@ -12,7 +12,7 @@ include 'header.php';
 
 // Check if the RecipeID is provided
 if (!isset($_GET['id'])) {
-    header("Location: login.php"); // Redirect to index if no ID is provided
+    header("Location: login_page.php"); // Redirect to index if no ID is provided
 }
 
 $id = $_GET['id']; // Get the RecipeID from the URL
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($db, $sql);
 
     // Redirect to the show page
-    header("Location: show.php?id=$id");
+    header("Location: view_recipe.php?id=$id");
 } else {
     // Display the recipe information in the form
     $sql = "SELECT * FROM recipes WHERE RecipeID = $id";
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">Edit Recipe</h1>
-                <form action="<?php echo 'edit.php?id=' . $result['RecipeID']; ?>" method="post"
+                <form action="<?php echo 'edit_recipe.php?id=' . $result['RecipeID']; ?>" method="post"
                     enctype="multipart/form-data">
 
                     <h2>Recipe Details</h2>
@@ -177,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div id="operations">
                         <button class="signup-button" type="submit">Save Changes</button>
                         <button type="button" class="back-button"
-                            onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
+                            onclick="location.href='../recipe-manager/home_page.php'">Back to Home</button>
                     </div>
                 </form>
             </div>

@@ -4,7 +4,7 @@ require_once('db_credentials.php'); // Include database credentials
 // Function to connect to the database
 function db_connect() {
     // Use mysqli to establish a connection
-    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME, '3308');
+    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     
     // Check if connection was successful
     if (mysqli_connect_errno()) {

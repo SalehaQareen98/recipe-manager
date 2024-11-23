@@ -17,27 +17,27 @@ document.addEventListener("DOMContentLoaded", function () {
     termInput = document.querySelector("#terms");
 
     // Initialize and append error message elements for each field
-    emailError = document.createElement('p'); // Create a paragraph element for error display
-    emailError.setAttribute("class", "warning");// Give it a class for styling
-    // Find the first element in the document with the class "textfield" 
-    // Append the newly created <p> element (emailError) as a child to this "textfield" element.
-    document.querySelectorAll(".textfield")[0].append(emailError);
+        emailError = document.createElement('p'); // Create a paragraph element for error display
+        emailError.setAttribute("class", "warning");// Give it a class for styling
+        // Find the first element in the document with the class "textfield" 
+        // Append the newly created <p> element (emailError) as a child to this "textfield" element.
+        document.querySelectorAll(".form-group")[0].append(emailError); 
+    
+        usernameError = document.createElement('p');
+        usernameError.setAttribute("class", "warning");
+        document.querySelectorAll(".form-group")[1].append(usernameError);
 
-    usernameError = document.createElement('p');
-    usernameError.setAttribute("class", "warning");
-    document.querySelectorAll(".textfield")[1].append(usernameError);
+        passwordError = document.createElement('p');
+        passwordError.setAttribute("class", "warning");
+        document.querySelectorAll(".form-group")[2].append(passwordError);
 
-    passwordError = document.createElement('p');
-    passwordError.setAttribute("class", "warning");
-    document.querySelectorAll(".textfield")[2].append(passwordError);
+        confirmPasswordError = document.createElement('p');
+        confirmPasswordError.setAttribute("class", "warning");
+        document.querySelectorAll(".form-group")[3].append(confirmPasswordError);
 
-    confirmPasswordError = document.createElement('p');
-    confirmPasswordError.setAttribute("class", "warning");
-    document.querySelectorAll(".textfield")[3].append(confirmPasswordError);
-
-    termError = document.createElement('p');
-    termError.setAttribute("id", "termError");
-    document.querySelector(".checkbox").append(termError);
+        termError = document.createElement('p');
+        termError.setAttribute("id", "termError");
+        document.querySelector(".form-checkbox").append(termError);
 
     // Inline validation for email on blur
     emailInput.addEventListener("blur", function () { //sets up an event listener that listens for the blur event on the emailInput element when user click away/tab out of the field

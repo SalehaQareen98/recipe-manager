@@ -1,6 +1,6 @@
 <?php
 session_start(); // Start the session to access session variables
-require_once('database.php'); // Include database connection
+require_once('database/database.php'); // Include database connection
 include "header.php"; // Include the header for consistent layout
 
 // Check if the user is logged in

@@ -1,6 +1,6 @@
 <?php
 // Include the database connection file
-require_once('database.php');
+require_once('database/database.php');
 
 // Start a session to manage user authentication
 session_start();

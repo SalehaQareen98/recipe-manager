@@ -74,7 +74,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="recipe-cards-container">
                     <?php
                     // PHP code to fetch and display recipes dynamically
-                    require_once('database.php');
+                    require_once('database/database.php');
                     $db = db_connect();
                     $user_id = $_SESSION['user_id'];
                     $sql = "SELECT * FROM recipes WHERE UserID = '$user_id' ORDER BY TimeToCook ASC";

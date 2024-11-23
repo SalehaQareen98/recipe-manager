@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once('database.php'); // Include your database connection script
+require_once('database/database.php'); // Include your database connection script
 $db = db_connect(); // Establish a database connection
 
 // Retrieve the keyword from the POST request

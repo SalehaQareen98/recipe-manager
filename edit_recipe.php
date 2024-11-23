@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once('database.php');
+require_once('database/database.php');
 $db = db_connect();
 
 include 'header.php';

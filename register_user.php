@@ -1,5 +1,5 @@
 <?php
-require_once('database.php');
+require_once('database/database.php');
 $db = db_connect();
 if (!$db) {
     die("Database connection failed: " . mysqli_connect_error());

@@ -394,9 +394,11 @@ textarea {
     background-color: gray;
     transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
+    height: 36px;
+    align-content: center;
 }
 
-.back-to-home:hover {
+.back-to-home-btn:hover {
     background-color: rgb(65, 64, 64);
     color: #fff;
 }
@@ -495,6 +497,9 @@ textarea {
     transition: background-color 0.3s ease;
     text-decoration: none;
     color: white;
+    border: none;
+    height: 36px;
+    align-content: center;
 }
 
 .btn-edit {
@@ -531,6 +536,15 @@ textarea {
     background-color: #2980b9;
 }
 
+
+/* img preview styles */
+#image-preview {
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+}
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {

@@ -28,14 +28,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $directions = $_POST['directions'];
     $type = $_POST['type'];
 
-    // Update the recipe with the new information
+    // Handle image upload
+    $imagePath = $result['Image']; // Default to current image path if no new image is uploaded
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        // Process the uploaded image
+        $targetDir = "uploads/"; // Set the target directory
+        $targetFile = $targetDir . basename($_FILES['image']['name']);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+        // Check if the file is an actual image
+        if (getimagesize($_FILES['image']['tmp_name']) === false) {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+
+        // Check file size (limit to 2MB for example)
+        if ($_FILES['image']['size'] > 2000000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+
+        // Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+        // Check if the file was uploaded
+        if ($uploadOk == 1 && move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+            $imagePath = $targetFile; // Update image path if upload is successful
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+
+    // Update the recipe with the new information and image
     $sql = "UPDATE recipes SET 
             Title = '$title', 
             TimeToCook = '$time_to_cook', 
             Vegetarian = $vegetarian, 
             Ingredients = '$ingredients', 
             Directions = '$directions', 
-            Type = '$type' 
+            Type = '$type', 
+            Image = '$imagePath' 
             WHERE RecipeID = $id";
     $result = mysqli_query($db, $sql);
 
@@ -57,17 +93,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Recipe</title>
     <link rel="stylesheet" href="style.css">
+
+    <script>
+        function previewImage(event) {
+            const imagePreview = document.getElementById('image-preview');
+            const file = event.target.files[0];
+            if (file) {
+                imagePreview.src = URL.createObjectURL(file);
+                imagePreview.style.display = 'block';
+            } else {
+                imagePreview.src = 'uploads/placeholder.jpg'; // Reset to placeholder if no file
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div class="wrapper-container edit-page">
-    <div class="overlay"></div>
+        <div class="overlay"></div>
         <div class="container">
-            <div class="form-box">              
+            <div class="form-box">
                 <h1 class="form-title">Edit Recipe</h1>
-                <form action="<?php echo 'edit.php?id=' . $result['RecipeID']; ?>" method="post">
+                <form action="<?php echo 'edit.php?id=' . $result['RecipeID']; ?>" method="post"
+                    enctype="multipart/form-data">
 
                     <h2>Recipe Details</h2>
+
+                    <!-- Image Upload Section -->
+                    <div class="form-group">
+                        <label class="label" for="image">Recipe Image</label>
+                        <input type="file" name="image" id="image" onchange="previewImage(event)">
+                        <p>Current Image: <img id="image-preview"
+                                src="<?php echo $result['Image'] ? htmlspecialchars($result['Image']) : 'uploads/placeholder.jpg'; ?>"
+                                alt="Current Recipe Image"></p>
+                    </div>
 
                     <div class="form-group">
                         <label class="label" for="title">Title</label>
@@ -115,20 +174,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </select>
                     </div>
 
-
                     <div id="operations">
                         <button class="signup-button" type="submit">Save Changes</button>
-                        <button type="button" class="back-button" onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
+                        <button type="button" class="back-button"
+                            onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-
-        <footer>
-            <?php include 'footer.php'; ?>
-        </footer>
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
 </body>
 
 </html>

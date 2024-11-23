@@ -14,6 +14,19 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Recipe</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function previewImage(event) {
+            const imagePreview = document.getElementById('image-preview');
+            const file = event.target.files[0];
+            if (file) {
+                imagePreview.src = URL.createObjectURL(file);
+                imagePreview.style.display = 'block';
+            } else {
+                imagePreview.src = 'uploads/placeholder.jpg'; // Reset to placeholder if no file
+            }
+        }
+    </script>
+    
 </head>
 
 <body>
@@ -26,17 +39,27 @@ if (!isset($_SESSION['user_id'])) {
             <div class="form-box">
                 <h1 class="form-title">Create New Recipe</h1>
 
-                <form action="create.php" method="POST">
+                <form action="create.php" method="POST" enctype="multipart/form-data">
+                    <!-- Image Upload and Preview -->
+                    <div class="form-group">
+                        <label class="label" for="recipe_image">Upload Recipe Image</label>
+                        <input class="input" type="file" id="recipe_image" name="recipe_image" accept="image/*" onchange="previewImage(event)" />
+                        <img id="image-preview" src="uploads/placeholder.jpg" alt="Image Preview" />
+                    </div>
+
+                    <!-- Title Field -->
                     <div class="form-group">
                         <label class="label" for="title">Recipe Title</label>
                         <input class="input" type="text" id="title" name="title" required />
                     </div>
 
+                    <!-- Time to Cook -->
                     <div class="form-group">
                         <label class="label" for="time_to_cook">Time to Cook</label>
                         <input class="input" type="text" id="time_to_cook" name="time_to_cook" required />
                     </div>
 
+                    <!-- Vegetarian Option -->
                     <div class="form-group">
                         <label class="label" for="vegetarian">Is Vegetarian</label>
                         <select class="select" id="vegetarian" name="vegetarian" required>
@@ -45,16 +68,19 @@ if (!isset($_SESSION['user_id'])) {
                         </select>
                     </div>
 
+                    <!-- Ingredients -->
                     <div class="form-group">
                         <label class="label" for="ingredients">Ingredients</label>
                         <textarea class="textbox" id="ingredients" name="ingredients" rows="5" required></textarea>
                     </div>
 
+                    <!-- Directions -->
                     <div class="form-group">
                         <label class="label" for="directions">Directions</label>
                         <textarea class="textbox" id="directions" name="directions" rows="10" required></textarea>
                     </div>
 
+                    <!-- Recipe Type -->
                     <div class="form-group">
                         <label class="label" for="type">Recipe Type</label>
                         <select class="select" id="type" name="type" required>
@@ -65,12 +91,11 @@ if (!isset($_SESSION['user_id'])) {
                         </select>
                     </div>
 
+                    <!-- Buttons -->
                     <div id="operations">
                         <button class="signup-button" type="submit">Create Recipe</button>
-                        <button type="button" class="back-button"
-                            onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
+                        <button type="button" class="back-button" onclick="location.href='../recipe-manager/home.php'">Back to Home</button>
                     </div>
-
                 </form>
             </div>
         </div>

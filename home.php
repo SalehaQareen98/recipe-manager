@@ -88,7 +88,7 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="recipe-card"
                             onclick="window.location.href='show.php?id=<?php echo $recipe['RecipeID']; ?>'">
                             <div class="recipe-image">
-                                <img src="images/login-photo.jpg" alt="Recipe Image">
+                            <img src="<?php echo htmlspecialchars($recipe['Image']); ?>" alt="Recipe Image">
                             </div>
                             <h2 class="recipe-title"><?php echo htmlspecialchars($recipe['Title']); ?></h2>
                         </div>

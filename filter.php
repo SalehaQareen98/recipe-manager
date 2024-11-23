@@ -34,7 +34,7 @@ $response = '';
 
 while ($recipe = mysqli_fetch_assoc($result_set)) {
     $response .= '<div class="recipe-card" onclick="window.location.href=\'show.php?id=' . $recipe['RecipeID'] . '\'">';
-    $response .= '<div class="recipe-image"><img src="images/login-photo.jpg" alt="Recipe Image"></div>';
+    $response .= '<div class="recipe-image"><img src="' . htmlspecialchars($recipe['Image']) . '" alt="Recipe Image"></div>';
     $response .= '<h2 class="recipe-title">' . htmlspecialchars($recipe['Title']) . '</h2>';
     $response .= '</div>';
 }

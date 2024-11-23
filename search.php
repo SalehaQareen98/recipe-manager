@@ -44,7 +44,7 @@ if (mysqli_num_rows($result_set) > 0) {
     while ($recipe = mysqli_fetch_assoc($result_set)) {
         $response .= '<div class="recipe-card" onclick="window.location.href=\'show.php?id=' . $recipe['RecipeID'] . '\'">';
         $response .= '<div class="recipe-image">';
-        $response .= '<img src="images/login-photo.jpg" alt="Recipe Image">';
+        $response .= '<img src="' . htmlspecialchars($recipe['Image']) . '" alt="Recipe Image">';
         $response .= '</div>';
         $response .= '<h2 class="recipe-title">' . htmlspecialchars($recipe['Title']) . '</h2>';
         $response .= '</div>';

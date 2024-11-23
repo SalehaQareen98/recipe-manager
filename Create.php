@@ -21,11 +21,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
     $ingredients = $_POST['ingredients']; // Ingredients list
     $directions = $_POST['directions']; // Cooking directions
     $type = $_POST['type']; // Recipe type (Appetizer, Main Course, etc.)
-    $user_id = $userID = $_SESSION['user_id'];; // Temporarily hardcoded; replace with session-based user ID when authentication is implemented
+    $user_id = $_SESSION['user_id']; // Get the logged-in user's ID from session
+
+    // Handle image upload
+    $image = "uploads/placeholder.jpg"; // Default image path if no image is uploaded
+    if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] === UPLOAD_ERR_OK) {
+        $targetDir = "uploads/";
+        $fileName = basename($_FILES["recipe_image"]["name"]);
+        $targetFile = $targetDir . $fileName;
+
+        // Ensure the uploads directory exists
+        if (!is_dir($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+
+        // Validate file type (optional: only allow image files)
+        $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($fileType, $validExtensions)) {
+            echo "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
+            exit;
+        }
+
+        // Move uploaded file to the target directory
+        if (move_uploaded_file($_FILES["recipe_image"]["tmp_name"], $targetFile)) {
+            $image = $targetFile; // Set the image path to the uploaded file
+        } else {
+            echo "Error uploading image.";
+            exit;
+        }
+    }
 
     // Prepare the SQL query string
-    $sql = "INSERT INTO recipes (Title, TimeToCook, Vegetarian, Ingredients, Directions, Type, UserID) 
-            VALUES ('$title', '$time_to_cook', $vegetarian, '$ingredients', '$directions', '$type', $user_id)";
+    $sql = "INSERT INTO recipes (Title, TimeToCook, Vegetarian, Ingredients, Directions, Type, UserID, Image) 
+            VALUES ('$title', '$time_to_cook', $vegetarian, '$ingredients', '$directions', '$type', $user_id, '$image')";
 
     // Execute the query
     $result = mysqli_query($db, $sql);
@@ -35,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
         $id = mysqli_insert_id($db); // Get the ID of the newly inserted recipe
         // Redirect to the show page with the generated ID
         header("Location: show.php?id=$id");
+        exit;
     } else {
         // Handle query error
         echo "Error adding recipe: " . mysqli_error($db);
@@ -42,9 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
 } else {
     // Redirect to the form page if the request is not POST
     header("Location: new.php");
+    exit;
 }
 
 // Close the database connection
 db_disconnect($db);
-
 ?>

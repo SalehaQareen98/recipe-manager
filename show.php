@@ -78,12 +78,19 @@ $result = mysqli_fetch_assoc($result_set);
                             <a href="home.php" class="back-to-home-btn">Back to Home</a>
                             <div class="card-actions">
                                 <a href="edit.php?id=<?php echo $result['RecipeID']; ?>" class="btn btn-edit">Edit</a>
-                                <!-- Call confirmDelete() on click -->
-                                <button class="btn btn-delete" onclick="confirmDelete(<?php echo $result['RecipeID']; ?>)">Delete</button>
+                                <button class="btn btn-delete"
+                                    onclick="confirmDelete(<?php echo $result['RecipeID']; ?>)">Delete</button>
                             </div>
                         </div>
                         <h1 class="recipe-title">Recipe: <?php echo htmlspecialchars($result['Title']); ?></h1>
                     </div>
+
+                    <!-- Recipe Image -->
+                    <div class="recipe-image">
+                        <img id="image-preview" src="<?php echo htmlspecialchars($result['Image']); ?>"
+                            alt="Recipe Image">
+                    </div>
+
 
                     <div class="recipe-details">
                         <h3>Type</h3>

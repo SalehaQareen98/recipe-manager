@@ -11,7 +11,7 @@ $db = db_connect();
 $user_id = $_SESSION['user_id']; // Retrieve the logged-in user's ID
 $filter = $_GET['filter'] ?? ''; // Retrieve the filter parameter from the URL
 
-// Initialize the base SQL query
+// Start building the base SQL query
 $sql = "SELECT * FROM recipes WHERE UserID = '$user_id'";
 
 // Append conditions based on the selected filter
@@ -22,6 +22,9 @@ if ($filter === 'Vegetarian') {
 } elseif (in_array($filter, ['15', '30', '60'])) {
     $sql .= " AND TIME_TO_SEC(STR_TO_DATE(TimeToCook, '%i minutes')) <= " . ($filter * 60);
 }
+
+// Add the ORDER BY clause at the end
+$sql .= " ORDER BY TimeToCook ASC";
 
 $result_set = mysqli_query($db, $sql);
 

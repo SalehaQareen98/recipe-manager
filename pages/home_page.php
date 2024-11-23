@@ -40,13 +40,14 @@ if (!isset($_SESSION['user_id'])) {
                     <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Search</button>
-                        <button type="reset" class="green-button"
-                            onclick="window.location.href='home_page.php'">Reset</button>
+                        <button type="button" class="green-button" onclick="resetSearchForm()">Reset</button>
+
                     </div>
                 </form>
 
                 <div class="center-button">
-                    <button class="add-recipe-button" onclick="window.location.href='new_recipe_page.php'">Add Recipe</button>
+                    <button class="add-recipe-button" onclick="window.location.href='new_recipe_page.php'">Add
+                        Recipe</button>
                 </div>
 
                 <!-- Filter form with onSubmit attribute -->
@@ -62,8 +63,7 @@ if (!isset($_SESSION['user_id'])) {
                     </select>
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Apply</button>
-                        <button type="reset" class="green-button"
-                            onclick="window.location.href='home_page.php'">Reset</button>
+                        <button type="button" class="green-button" onclick="resetFilterForm()">Reset</button>
                     </div>
                 </form>
             </div>

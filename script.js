@@ -8,67 +8,67 @@ let confirmPasswordErrorMsg = "X Passwords do not match.";
 let termsErrorMsg = "X Please accept the terms and conditions.";
 
 // Initialize error messages and event listeners once the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Selecting elements for inputs and checkboxes
     emailInput = document.querySelector("#email");
     usernameInput = document.querySelector("#login");
     passwordInput = document.querySelector("#pass");
     confirmPasswordInput = document.querySelector("#pass2");
     termInput = document.querySelector("#terms");
-    
+
     // Initialize and append error message elements for each field
-        emailError = document.createElement('p'); // Create a paragraph element for error display
-        emailError.setAttribute("class", "warning");// Give it a class for styling
-        // Find the first element in the document with the class "textfield" 
-        // Append the newly created <p> element (emailError) as a child to this "textfield" element.
-        document.querySelectorAll(".textfield")[0].append(emailError); 
-    
-        usernameError = document.createElement('p');
-        usernameError.setAttribute("class", "warning");
-        document.querySelectorAll(".textfield")[1].append(usernameError);
+    emailError = document.createElement('p'); // Create a paragraph element for error display
+    emailError.setAttribute("class", "warning");// Give it a class for styling
+    // Find the first element in the document with the class "textfield" 
+    // Append the newly created <p> element (emailError) as a child to this "textfield" element.
+    document.querySelectorAll(".textfield")[0].append(emailError);
 
-        passwordError = document.createElement('p');
-        passwordError.setAttribute("class", "warning");
-        document.querySelectorAll(".textfield")[2].append(passwordError);
+    usernameError = document.createElement('p');
+    usernameError.setAttribute("class", "warning");
+    document.querySelectorAll(".textfield")[1].append(usernameError);
 
-        confirmPasswordError = document.createElement('p');
-        confirmPasswordError.setAttribute("class", "warning");
-        document.querySelectorAll(".textfield")[3].append(confirmPasswordError);
+    passwordError = document.createElement('p');
+    passwordError.setAttribute("class", "warning");
+    document.querySelectorAll(".textfield")[2].append(passwordError);
 
-        termError = document.createElement('p');
-        termError.setAttribute("id", "termError");
-        document.querySelector(".checkbox").append(termError);
+    confirmPasswordError = document.createElement('p');
+    confirmPasswordError.setAttribute("class", "warning");
+    document.querySelectorAll(".textfield")[3].append(confirmPasswordError);
+
+    termError = document.createElement('p');
+    termError.setAttribute("id", "termError");
+    document.querySelector(".checkbox").append(termError);
 
     // Inline validation for email on blur
-    emailInput.addEventListener("blur", function() { //sets up an event listener that listens for the blur event on the emailInput element when user click away/tab out of the field
+    emailInput.addEventListener("blur", function () { //sets up an event listener that listens for the blur event on the emailInput element when user click away/tab out of the field
         let validationMessage = validateEmail(); //assign the result of validate email function to validate message
         emailError.textContent = validationMessage; // message it assigned to textcontent of emailError element(error or default msg), to show the nessage below the email input field
         emailInput.classList.toggle("error-input", validationMessage !== defaultMsg); //checks the conditions, if true add the class error-input for css styling on email input field, if false removes the class)
     });
 
     // Inline validation for username on blur
-    usernameInput.addEventListener("blur", function() {
+    usernameInput.addEventListener("blur", function () {
         let validationMessage = validateUsername();
         usernameError.textContent = validationMessage;
         usernameInput.classList.toggle("error-input", validationMessage !== defaultMsg);
     });
 
     // Inline validation for password on blur
-    passwordInput.addEventListener("blur", function() {
+    passwordInput.addEventListener("blur", function () {
         let validationMessage = validatePassword();
         passwordError.textContent = validationMessage;
         passwordInput.classList.toggle("error-input", validationMessage !== defaultMsg);
     });
 
     // Inline validation for confirm password on blur
-    confirmPasswordInput.addEventListener("blur", function() {
+    confirmPasswordInput.addEventListener("blur", function () {
         let validationMessage = validateConfirmPassword();
         confirmPasswordError.textContent = validationMessage;
         confirmPasswordInput.classList.toggle("error-input", validationMessage !== defaultMsg);
     });
 
     // Inline validation for terms on change
-    termInput.addEventListener("change", function() {//The change event fires whenever the user checks or unchecks the box.
+    termInput.addEventListener("change", function () {//The change event fires whenever the user checks or unchecks the box.
         let termsValidation = validateTerms();
         termError.textContent = termsValidation;
     });
@@ -76,14 +76,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // Event listener for form submission
     const form = document.querySelector("form");
     if (form) {
-        form.addEventListener("submit", function(event) {
+        form.addEventListener("submit", function (event) {
             if (!validate()) { // Call a validation function before submitting
                 event.preventDefault(); // Prevent form submission if validation fails
             }
         });
 
         // Clear error messages on form reset
-        form.addEventListener("reset", function() { //. When the reset button is clicked, this function runs to clear error messages and reset input field styles.
+        form.addEventListener("reset", function () { //. When the reset button is clicked, this function runs to clear error messages and reset input field styles.
             emailError.textContent = defaultMsg;
             usernameError.textContent = defaultMsg;
             passwordError.textContent = defaultMsg;
@@ -229,6 +229,47 @@ function handleFilterFormSubmit(event) {
             document.querySelector('.recipe-cards-container').innerHTML = data;
         })
         .catch(error => console.error('Error:', error));
+}
+
+function resetSearchForm() {
+    const form = document.getElementById('search-form');
+
+    // Reset the form fields
+    form.reset();
+
+    // Manually trigger the submit function with an empty keyword
+    const formData = new FormData(form);
+    formData.set('keyword', ''); // Ensure the keyword is empty
+
+    fetch('../server/search_recipes.php', {
+        method: 'POST',
+        body: formData,
+    })
+        .then(response => response.text())
+        .then(data => {
+            // Update the recipes list dynamically
+            document.querySelector('.recipe-cards-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function resetFilterForm() {
+    const form = document.getElementById('filter-form');
+
+    // Reset the form fields
+    form.reset();
+
+    // Manually trigger the filter function with no filter
+    fetch('../server/filter_recipes.php', {
+        method: 'GET',
+    })
+        .then(response => response.text())
+        .then(data => {
+            // Update the recipes list dynamically
+            document.querySelector('.recipe-cards-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+
 }
 
 

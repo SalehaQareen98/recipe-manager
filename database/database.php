@@ -1,5 +1,5 @@
 <?php
-require_once('database/db_credentials.php'); // Include database credentials
+require_once('db_credentials.php'); // Include database credentials
 
 // Function to connect to the database
 function db_connect() {

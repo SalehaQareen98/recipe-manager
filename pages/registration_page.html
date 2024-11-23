@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <title>User Registration Form</title>
     <script src="script.js"></script>
 </head>
@@ -13,17 +13,17 @@
     <header class="main-header">
         <div class="title-container">
             <div class="logo-image">
-                <img src="images/logo.jpg" alt="Recipe Image">
+                <img src="../images/logo.jpg" alt="Recipe Image">
             </div>
             <h1 class="header-title">Bon Appétit</h1>
         </div>
         <div class="header-container">
             <div class="title">
-                <a href="login_page.php" class="nav-link">Login</a>
+                <a href="pages/login_page.php" class="nav-link">Login</a>
             </div>
     
             <div class="user-profile">
-                <a href="registration_page.html" class="nav-link">Sign Up</a>
+                <a href="pages/registration_page.html" class="nav-link">Sign Up</a>
             </div>
     
         </div>
@@ -34,7 +34,7 @@
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">User Registration Form</h1>
-                <form action="register_user.php" method="POST" class="form" onsubmit="return validate()">
+                <form action="server/register_user.php" method="POST" class="form" onsubmit="return validate()">
                     <div class="form-group">
                         <label for="email" class="label">Email Address</label>
                         <input type="email" name="email" id="email" class="input" placeholder="Email" required>
@@ -62,7 +62,7 @@
     
                     <button type="submit" class="login-button">Sign-Up</button>
                     <button type="reset" class="signup-button">Reset</button>
-                    <button type="button" class="back-button" onclick="location.href='../recipe-manager/login_page.php'">Login Page</button>
+                    <button type="button" class="back-button" onclick="location.href='../recipe-manager/pages/login_page.php'">Login Page</button>
 
                 </form>
             </div>

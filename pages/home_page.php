@@ -12,8 +12,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Manager</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="home_page_styles.css">
+    <link rel="stylesheet" href="../home_page_styles.css">
 </head>
 
 <body>
@@ -25,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
 
         <div class="main-container">
             <div class="title-image-container">
-                <img src="images/title-img.jpg" alt="Recipe Image" class="title-img">
+                <img src="../images/title-img.jpg" alt="Recipe Image" class="title-img">
                 <div class="overlay"></div>
                 <div class="title-text">
                     <h1 class="image-title">Welcome to Recipe Manager</h1>
@@ -34,7 +33,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div class="search-filter-section">
-                <form id="search-form" class="search-bar" action="search_recipes.php" method="POST">
+                <form id="search-form" class="search-bar" action="../server/search_recipes.php" method="POST">
                     <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Search</button>
@@ -48,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
                         Recipe</button>
                 </div>
 
-                <form id="filter-form" class="filter-dropdown" action="filter_recipes.php" method="GET">
+                <form id="filter-form" class="filter-dropdown" action="../server/filter_recipes.php" method="GET">
                     <select id="filter" name="filter">
                         <option value="">Filter Recipes</option>
                         <option value="Vegetarian">Vegetarian</option>
@@ -74,7 +73,7 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="recipe-cards-container">
                     <?php
                     // PHP code to fetch and display recipes dynamically
-                    require_once('database/database.php');
+                    require_once('../database/database.php');
                     $db = db_connect();
                     $user_id = $_SESSION['user_id'];
                     $sql = "SELECT * FROM recipes WHERE UserID = '$user_id' ORDER BY TimeToCook ASC";
@@ -108,7 +107,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 const formData = new FormData(this); // Get form data
 
-                fetch('search_recipes.php', {
+                fetch('../server/search_recipes.php', {
                     method: 'POST',
                     body: formData,
                 })
@@ -126,7 +125,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 const formData = new FormData(this); // Get form data
 
-                fetch('filter_recipes.php?' + new URLSearchParams(formData), {
+                fetch('../server/filter_recipes.php?' + new URLSearchParams(formData), {
                     method: 'GET',
                 })
                     .then(response => response.text())

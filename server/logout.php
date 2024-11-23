@@ -1,5 +1,5 @@
 <?php
-// logout.php
+// server/logout.php
 
 session_start(); // Start the session
 
@@ -10,6 +10,6 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to the login page
-header("Location: login_page.php");
+header("Location: ../pages/login_page.php");
 exit;
 ?>

@@ -1,18 +1,18 @@
 <?php
 session_start(); // Start the session to access session variables
-require_once('database/database.php'); // Include database connection
-include "header.php"; // Include the header for consistent layout
+require_once('../database/database.php'); // Include database connection
+include "../pages/header.php"; // Include the header for consistent layout
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login_page.php"); // Redirect to login page
+    header("Location: ../pages/login_page.php"); // Redirect to login page
     exit;
 }
 
 // Connect to the database
 $db = db_connect();
 
-// Handle form values sent by new_recipe_page.php
+// Handle form values sent by pages/new_recipe_page.php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via POST
     // Capture form data
     $title = $_POST['title']; // Recipe title
@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
     $user_id = $_SESSION['user_id']; // Get the logged-in user's ID from session
 
     // Handle image upload
-    $image = "uploads/placeholder.jpg"; // Default image path if no image is uploaded
+    $image = "../uploads/placeholder.jpg"; // Default image path if no image is uploaded
     if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] === UPLOAD_ERR_OK) {
-        $targetDir = "uploads/";
+        $targetDir = "../uploads/";
         $fileName = basename($_FILES["recipe_image"]["name"]);
         $targetFile = $targetDir . $fileName;
 
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
     if ($result) {
         $id = mysqli_insert_id($db); // Get the ID of the newly inserted recipe
         // Redirect to the show page with the generated ID
-        header("Location: view_recipe.php?id=$id");
+        header("Location: ../pages/view_recipe.php?id=$id");
         exit;
     } else {
         // Handle query error
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Ensure the form is submitted via 
     }
 } else {
     // Redirect to the form page if the request is not POST
-    header("Location: new_recipe_page.php");
+    header("Location: ../pages/new_recipe_page.php");
     exit;
 }
 

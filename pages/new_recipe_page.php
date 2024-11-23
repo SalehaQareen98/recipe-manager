@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Recipe</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script>
         function previewImage(event) {
             const imagePreview = document.getElementById('image-preview');
@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
                 imagePreview.src = URL.createObjectURL(file);
                 imagePreview.style.display = 'block';
             } else {
-                imagePreview.src = 'uploads/placeholder.jpg'; // Reset to placeholder if no file
+                imagePreview.src = '../uploads/placeholder.jpg'; // Reset to placeholder if no file
             }
         }
     </script>
@@ -39,12 +39,12 @@ if (!isset($_SESSION['user_id'])) {
             <div class="form-box">
                 <h1 class="form-title">Create New Recipe</h1>
 
-                <form action="create_recipe.php" method="POST" enctype="multipart/form-data">
+                <form action="../server/create_recipe.php" method="POST" enctype="multipart/form-data">
                     <!-- Image Upload and Preview -->
                     <div class="form-group">
                         <label class="label" for="recipe_image">Upload Recipe Image</label>
                         <input class="input" type="file" id="recipe_image" name="recipe_image" accept="image/*" onchange="previewImage(event)" />
-                        <img id="image-preview" src="uploads/placeholder.jpg" alt="Image Preview" />
+                        <img id="image-preview" src="../uploads/placeholder.jpg" alt="Image Preview" />
                     </div>
 
                     <!-- Title Field -->
@@ -94,7 +94,7 @@ if (!isset($_SESSION['user_id'])) {
                     <!-- Buttons -->
                     <div id="operations">
                         <button class="signup-button" type="submit">Create Recipe</button>
-                        <button type="button" class="back-button" onclick="location.href='../recipe-manager/home_page.php'">Back to Home</button>
+                        <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to Home</button>
                     </div>
                 </form>
             </div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('database/database.php');
+require_once('../database/database.php');
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -31,7 +31,7 @@ $result = mysqli_fetch_assoc($result_set);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Details</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script>
         async function confirmDelete(recipeID) {
             // Display confirmation dialog
@@ -40,7 +40,7 @@ $result = mysqli_fetch_assoc($result_set);
 
             try {
                 // Send DELETE request using Fetch API
-                const response = await fetch("delete_recipe.php", {
+                const response = await fetch("../server/delete_recipe.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -77,7 +77,7 @@ $result = mysqli_fetch_assoc($result_set);
                         <div class="btns-container">
                             <a href="home_page.php" class="back-to-home-btn">Back to Home</a>
                             <div class="card-actions">
-                                <a href="edit_recipe.php?id=<?php echo $result['RecipeID']; ?>" class="btn btn-edit">Edit</a>
+                                <a href="../pages/edit_recipe_page.php?id=<?php echo $result['RecipeID']; ?>" class="btn btn-edit">Edit</a>
                                 <button class="btn btn-delete"
                                     onclick="confirmDelete(<?php echo $result['RecipeID']; ?>)">Delete</button>
                             </div>

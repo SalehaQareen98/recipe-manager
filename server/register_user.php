@@ -1,5 +1,5 @@
 <?php
-require_once('database/database.php');
+require_once('../database/database.php');
 $db = db_connect();
 if (!$db) {
     die("Database connection failed: " . mysqli_connect_error());
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the query
     if (mysqli_query($db, $sql)) {
-        echo "<p>Registration successful! You can now <a href='login_page.php'>log in</a>.</p>";
+        echo "<p>Registration successful! You can now <a href='../pages/login_page.php'>log in</a>.</p>";
     } else {
         // Handle errors (e.g., duplicate email)
         if (mysqli_errno($db) == 1062) {
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     db_disconnect($db);
 } else {
     // Redirect if the request method is not POST
-    header("Location: registration_page.html");
+    header("Location: ../pages/registration_page.html");
     exit;
 }
 ?>

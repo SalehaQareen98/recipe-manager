@@ -1,58 +1,10 @@
-<?php
-// Include the database connection file
-require_once('database/database.php');
-
-// Start a session to manage user authentication
-session_start();
-// Check if the request method is POST (form submission)
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $db = db_connect(); // Database connection
-    // Retrieve user-submitted email and password from the login form
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Sanitize the email input to prevent SQL injection
-    $email = mysqli_real_escape_string($db, $email);
-
-    // Query to find the user in the database by email
-    $sql = "SELECT * FROM users WHERE Email = '$email'";
-    $result = mysqli_query($db, $sql);
-    // Check if a matching user record exists
-    if ($result && mysqli_num_rows($result) > 0) {
-
-        // Fetch the user record as an associative array
-        $user = mysqli_fetch_assoc($result);
-
-
-        // Verify the hashed password stored in the database with the user-entered password
-        if (password_verify($password, $user['PasswordHash'])) {
-            // Store user data in the session for authentication
-            $_SESSION['user_id'] = $user['UserID']; // Store UserID
-            $_SESSION['name'] = $user['Name'];     // Store user's name
-
-            // Redirect to home after successful login
-            header("Location: home_page.php");
-            exit; // Stop further script execution
-        } else {
-            // Set an error message for invalid password
-            $error_message = "Invalid password. Please try again.";
-        }
-    } else {
-        // Set an error message if no user is found with the entered email
-        $error_message = "No account found with this email. Please register.";
-        header("location: registration_page.html");
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <title>Login</title>
 </head>
 
@@ -60,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <header class="main-header">
         <div class="title-container">
             <div class="logo-image">
-                <img src="images/logo.jpg" alt="Recipe Image">
+                <img src="../images/logo.jpg" alt="Recipe Image">
             </div>
             <h1 class="header-title">Bon Appétit</h1>
         </div>
@@ -82,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php endif; ?>
 
                 <!-- Login form for user authentication -->
-                <form method="POST" action="login_page.php">
+                <form method="POST" action="../server/login.php">
                     <!-- Email input field -->
                     <div class="form-group">
                         <label class="label" for="email">Email:</label>

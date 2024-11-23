@@ -30,19 +30,7 @@ $result = mysqli_fetch_assoc($result_set); // Fetch the recipe data
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Recipe</title>
     <link rel="stylesheet" href="../style.css">
-
-    <script>
-        function previewImage(event) {
-            const imagePreview = document.getElementById('image-preview');
-            const file = event.target.files[0];
-            if (file) {
-                imagePreview.src = URL.createObjectURL(file);
-                imagePreview.style.display = 'block';
-            } else {
-                imagePreview.src = '../uploads/placeholder.jpg'; // Reset to placeholder if no file
-            }
-        }
-    </script>
+    <script src="../script.js"></script>
 </head>
 
 <body>

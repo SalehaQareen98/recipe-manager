@@ -38,10 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // Set an error message for invalid password
             $error_message = "Invalid password. Please try again.";
+            echo $error_message;
         }
     } else {
         // Set an error message if no user is found with the entered email
         $error_message = "No account found with this email. Please register.";
+        echo $error_message;
     }
 }
 ?>

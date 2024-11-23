@@ -32,35 +32,7 @@ $result = mysqli_fetch_assoc($result_set);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Details</title>
     <link rel="stylesheet" href="../style.css">
-    <script>
-        async function confirmDelete(recipeID) {
-            // Display confirmation dialog
-            const userConfirmed = confirm("Are you sure you want to delete this recipe?");
-            if (!userConfirmed) return;
-
-            try {
-                // Send DELETE request using Fetch API
-                const response = await fetch("../server/delete_recipe.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: `id=${recipeID}`,
-                });
-
-                if (response.ok) {
-                    alert("Recipe deleted successfully.");
-                    window.location.href = "home_page.php"; // Redirect after successful deletion
-                } else {
-                    const errorText = await response.text();
-                    alert("Error deleting recipe: " + errorText);
-                }
-            } catch (error) {
-                alert("An error occurred. Please try again.");
-                console.error("Error:", error);
-            }
-        }
-    </script>
+    <script src="../script.js"></script>
 </head>
 
 <body>

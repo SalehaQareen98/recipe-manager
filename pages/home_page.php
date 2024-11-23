@@ -1,10 +1,11 @@
-<!-- <?php
+<?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: login_page.php");
     exit;
 }
-?> -->
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,11 +14,11 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Manager</title>
     <link rel="stylesheet" href="../home_page_styles.css">
+    <script src="../script.js"></script>
 </head>
 
 <body>
     <div class="content">
-
         <header class="header">
             <?php include("header.php"); ?>
         </header>
@@ -33,7 +34,9 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div class="search-filter-section">
-                <form id="search-form" class="search-bar" action="../server/search_recipes.php" method="POST">
+                <!-- Search form with onSubmit attribute -->
+                <form id="search-form" class="search-bar" action="../server/search_recipes.php" method="POST"
+                    onsubmit="handleSearchFormSubmit(event)">
                     <input type="text" id="keyword" name="keyword" placeholder="Search recipes..." required>
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Search</button>
@@ -43,11 +46,12 @@ if (!isset($_SESSION['user_id'])) {
                 </form>
 
                 <div class="center-button">
-                    <button class="add-recipe-button" onclick="window.location.href='new_recipe_page.php'">Add
-                        Recipe</button>
+                    <button class="add-recipe-button" onclick="window.location.href='new_recipe_page.php'">Add Recipe</button>
                 </div>
 
-                <form id="filter-form" class="filter-dropdown" action="../server/filter_recipes.php" method="GET">
+                <!-- Filter form with onSubmit attribute -->
+                <form id="filter-form" class="filter-dropdown" action="../server/filter_recipes.php" method="GET"
+                    onsubmit="handleFilterFormSubmit(event)">
                     <select id="filter" name="filter">
                         <option value="">Filter Recipes</option>
                         <option value="Vegetarian">Vegetarian</option>
@@ -63,16 +67,14 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </form>
             </div>
+
             <div class="sub-heading">
                 <h1>My Recipes</h1>
             </div>
 
-
-
             <div class="recipes-listing">
                 <div class="recipe-cards-container">
                     <?php
-                    // PHP code to fetch and display recipes dynamically
                     require_once('../database/database.php');
                     $db = db_connect();
                     $user_id = $_SESSION['user_id'];
@@ -83,7 +85,7 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="recipe-card"
                             onclick="window.location.href='view_recipe.php?id=<?php echo $recipe['RecipeID']; ?>'">
                             <div class="recipe-image">
-                            <img src="<?php echo htmlspecialchars($recipe['Image']); ?>" alt="Recipe Image">
+                                <img src="<?php echo htmlspecialchars($recipe['Image']); ?>" alt="Recipe Image">
                             </div>
                             <h2 class="recipe-title"><?php echo htmlspecialchars($recipe['Title']); ?></h2>
                         </div>
@@ -99,45 +101,7 @@ if (!isset($_SESSION['user_id'])) {
         <footer class="footer">
             <?php include("footer.php"); ?>
         </footer>
-
-        <script>
-            // Handle the search form submission
-            document.getElementById('search-form').addEventListener('submit', function (e) {
-                e.preventDefault(); // Prevent the default form submission
-
-                const formData = new FormData(this); // Get form data
-
-                fetch('../server/search_recipes.php', {
-                    method: 'POST',
-                    body: formData,
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        // Update the recipes list dynamically
-                        document.querySelector('.recipe-cards-container').innerHTML = data;
-                    })
-                    .catch(error => console.error('Error:', error));
-            });
-
-            // Handle the filter form submission
-            document.querySelector('.filter-dropdown').addEventListener('submit', function (e) {
-                e.preventDefault(); // Prevent the default form submission
-
-                const formData = new FormData(this); // Get form data
-
-                fetch('../server/filter_recipes.php?' + new URLSearchParams(formData), {
-                    method: 'GET',
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        // Update the recipes list dynamically
-                        document.querySelector('.recipe-cards-container').innerHTML = data;
-                    })
-                    .catch(error => console.error('Error:', error));
-            });
-        </script>
     </div>
-
 </body>
 
 </html>

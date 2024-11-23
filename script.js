@@ -184,3 +184,78 @@ function validate() {
 
     return valid; // Prevent form submission if not valid
 }
+
+function previewImage(event) {
+    const imagePreview = document.getElementById('image-preview');
+    const file = event.target.files[0];
+    if (file) {
+        imagePreview.src = URL.createObjectURL(file);
+        imagePreview.style.display = 'block';
+    } else {
+        imagePreview.src = '../uploads/placeholder.jpg'; // Reset to placeholder if no file
+    }
+}
+
+// Function to handle the search form submission
+function handleSearchFormSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(event.target); // Get form data
+
+    fetch('../server/search_recipes.php', {
+        method: 'POST',
+        body: formData,
+    })
+        .then(response => response.text())
+        .then(data => {
+            // Update the recipes list dynamically
+            document.querySelector('.recipe-cards-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function to handle the filter form submission
+function handleFilterFormSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(event.target); // Get form data
+
+    fetch('../server/filter_recipes.php?' + new URLSearchParams(formData), {
+        method: 'GET',
+    })
+        .then(response => response.text())
+        .then(data => {
+            // Update the recipes list dynamically
+            document.querySelector('.recipe-cards-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+async function confirmDelete(recipeID) {
+    // Display confirmation dialog
+    const userConfirmed = confirm("Are you sure you want to delete this recipe?");
+    if (!userConfirmed) return;
+
+    try {
+        // Send DELETE request using Fetch API
+        const response = await fetch("../server/delete_recipe.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `id=${recipeID}`,
+        });
+
+        if (response.ok) {
+            alert("Recipe deleted successfully.");
+            window.location.href = "home_page.php"; // Redirect after successful deletion
+        } else {
+            const errorText = await response.text();
+            alert("Error deleting recipe: " + errorText);
+        }
+    } catch (error) {
+        alert("An error occurred. Please try again.");
+        console.error("Error:", error);
+    }
+}

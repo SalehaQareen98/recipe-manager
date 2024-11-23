@@ -19,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the query
     if (mysqli_query($db, $sql)) {
-        echo "<p>Registration successful! You can now <a href='../pages/login_page.php'>log in</a>.</p>";
+        // echo "<p>Registration successful! You can now <a href='../pages/login_page.php'>log in</a>.</p>";
+        header("Location: ../pages/login_page.php");
     } else {
         // Handle errors (e.g., duplicate email)
         if (mysqli_errno($db) == 1062) {

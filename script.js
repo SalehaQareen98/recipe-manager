@@ -21,23 +21,23 @@ document.addEventListener("DOMContentLoaded", function() {
         emailError.setAttribute("class", "warning");// Give it a class for styling
         // Find the first element in the document with the class "textfield" 
         // Append the newly created <p> element (emailError) as a child to this "textfield" element.
-        document.querySelectorAll(".textfield")[0].append(emailError); 
+        document.querySelectorAll(".form-group")[0].append(emailError); 
     
         usernameError = document.createElement('p');
         usernameError.setAttribute("class", "warning");
-        document.querySelectorAll(".textfield")[1].append(usernameError);
+        document.querySelectorAll(".form-group")[1].append(usernameError);
 
         passwordError = document.createElement('p');
         passwordError.setAttribute("class", "warning");
-        document.querySelectorAll(".textfield")[2].append(passwordError);
+        document.querySelectorAll(".form-group")[2].append(passwordError);
 
         confirmPasswordError = document.createElement('p');
         confirmPasswordError.setAttribute("class", "warning");
-        document.querySelectorAll(".textfield")[3].append(confirmPasswordError);
+        document.querySelectorAll(".form-group")[3].append(confirmPasswordError);
 
         termError = document.createElement('p');
         termError.setAttribute("id", "termError");
-        document.querySelector(".checkbox").append(termError);
+        document.querySelector(".form-checkbox").append(termError);
 
     // Inline validation for email on blur
     emailInput.addEventListener("blur", function() { //sets up an event listener that listens for the blur event on the emailInput element when user click away/tab out of the field

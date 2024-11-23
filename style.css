@@ -290,7 +290,21 @@ footer {
     margin-bottom: 20px;
     font-weight: 700;
 }
-
+/* Error message styling for registration */
+.warning {
+    color: red;
+    font-size: 0.9em;
+    margin-top:0;
+    margin-bottom: 10px;
+    display: block;
+}
+#termError {
+    display: inline;
+    margin-left: 5px; 
+    color: red;
+    font-size: 0.9em;
+    vertical-align: middle;
+}
 /* Error message styling */
 .error {
     color: red;

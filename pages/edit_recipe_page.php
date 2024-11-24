@@ -45,8 +45,6 @@ $result = mysqli_fetch_assoc($result_set); // Fetch the recipe data
                 <form action="../server/edit_recipe.php?id=<?php echo $result['RecipeID']; ?>" method="post"
                     enctype="multipart/form-data">
 
-                    <h2>Recipe Details</h2>
-
                     <!-- Image Upload Section -->
                     <div class="form-group">
                         <label class="label" for="image">Recipe Image</label>

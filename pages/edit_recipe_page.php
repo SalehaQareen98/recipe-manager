@@ -38,6 +38,9 @@ unset($_SESSION['errors']); // Clear errors after displaying them
 </head>
 
 <body>
+    <header>
+        <?php include 'header.php'; ?>
+    </header>
     <div class="wrapper-container edit-page">
         <div class="overlay"></div>
         <div class="container">
@@ -57,8 +60,6 @@ unset($_SESSION['errors']); // Clear errors after displaying them
 
                 <form action="../server/edit_recipe.php?id=<?php echo $result['RecipeID']; ?>" method="post"
                     enctype="multipart/form-data">
-
-                    <h2>Recipe Details</h2>
 
                     <!-- Image Upload Section -->
                     <div class="form-group">
@@ -117,8 +118,8 @@ unset($_SESSION['errors']); // Clear errors after displaying them
 
                     <div id="operations">
                         <button class="signup-button" type="submit">Save Changes</button>
-                        <button type="button" class="back-button"
-                            onclick="location.href='home_page.php'">Back to Home</button>
+                        <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to
+                            Home</button>
                     </div>
                 </form>
             </div>

@@ -36,14 +36,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../pages/home_page.php");
             exit; // Stop further script execution
         } else {
-            // Set an error message for invalid password
-            $error_message = "Invalid password. Please try again.";
-            echo $error_message;
+            // Show an alert for an invalid password
+            echo "<script>
+                    alert('Invalid password. Please try again.');
+                    window.location.href = '../pages/login_page.php';
+                    </script>";
+            exit;
         }
     } else {
-        // Set an error message if no user is found with the entered email
-        $error_message = "No account found with this email. Please register.";
-        echo $error_message;
+        // Show an alert if no user is found with the entered email
+        echo "<script>
+                alert('No account found with this email. Please sign-up.');
+                window.location.href = '../pages/login_page.php';
+                </script>";
+        exit;
     }
 }
 ?>

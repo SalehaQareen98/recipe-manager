@@ -290,21 +290,24 @@ footer {
     margin-bottom: 20px;
     font-weight: 700;
 }
+
 /* Error message styling for registration */
 .warning {
     color: red;
     font-size: 0.9em;
-    margin-top:0;
+    margin-top: 0;
     margin-bottom: 10px;
     display: block;
 }
+
 #termError {
     display: inline;
-    margin-left: 5px; 
+    margin-left: 5px;
     color: red;
     font-size: 0.9em;
     vertical-align: middle;
 }
+
 /* Error message styling */
 .error {
     color: red;
@@ -328,12 +331,12 @@ footer {
 .error-box ul {
     list-style-type: none;
     padding: 0;
-    margin: 0; 
+    margin: 0;
 }
 
 .error-box ul li {
     margin-bottom: 5px;
-    line-height: 1.5; 
+    line-height: 1.5;
 }
 
 

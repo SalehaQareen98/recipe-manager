@@ -23,19 +23,27 @@ body {
 
 .title-image-container {
     position: relative;
-    display: inline-block; /* Ensures the container size matches the image */
-    width: 100%; /* Make the container responsive */
-    max-width: 1200px; /* Optional: Limit the maximum width */
-    overflow: hidden; /* Ensures content stays within the container */
+    display: inline-block;
+    /* Ensures the container size matches the image */
+    width: 100%;
+    /* Make the container responsive */
+    max-width: 1200px;
+    /* Optional: Limit the maximum width */
+    overflow: hidden;
+    /* Ensures content stays within the container */
     margin-bottom: 10px;
 }
 
 .title-img {
     display: block;
-    width: 100%; /* Ensure the image scales properly */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 400px; /* Limit the height of the image */
-    object-fit: cover; /* Ensures the image crops appropriately if height is limited */
+    width: 100%;
+    /* Ensure the image scales properly */
+    height: auto;
+    /* Maintain aspect ratio */
+    max-height: 400px;
+    /* Limit the height of the image */
+    object-fit: cover;
+    /* Ensures the image crops appropriately if height is limited */
 }
 
 .overlay {
@@ -44,8 +52,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Black overlay with 40% opacity */
-    z-index: 1; /* Layer it above the image but below the text */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black overlay with 40% opacity */
+    z-index: 1;
+    /* Layer it above the image but below the text */
 }
 
 .title-text {
@@ -56,8 +66,10 @@ body {
     color: white;
     text-align: center;
     font-size: 25px;
-    z-index: 2; /* Ensure text is above the overlay */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a shadow for extra clarity */
+    z-index: 2;
+    /* Ensure text is above the overlay */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    /* Add a shadow for extra clarity */
 }
 
 .sub-heading {
@@ -100,19 +112,26 @@ body {
     padding: 12px 30px;
     font-size: 1rem;
     color: white;
-    background: linear-gradient(90deg, #FF5733, #FF7F50); /* Orange gradient */
+    background: linear-gradient(90deg, #FF5733, #FF7F50);
+    /* Orange gradient */
     border: none;
-    border-radius: 25px; /* Rounded edges */
+    border-radius: 25px;
+    /* Rounded edges */
     cursor: pointer;
-    transition: all 0.3s ease; /* Smooth hover effects */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease;
+    /* Smooth hover effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
     font-weight: bold;
 }
 
 .add-recipe-button:hover {
-    background: linear-gradient(90deg, #FF7F50, #FF9575); /* Brighter gradient for hover */
-    transform: scale(1.05); /* Subtle zoom effect */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    background: linear-gradient(90deg, #FF7F50, #FF9575);
+    /* Brighter gradient for hover */
+    transform: scale(1.05);
+    /* Subtle zoom effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    /* Enhanced shadow on hover */
 }
 
 
@@ -211,6 +230,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
+
 /* Recipe Card Styling */
 .recipe-card {
     background-color: #fff;
@@ -220,7 +240,8 @@ body {
     margin: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
-    width: 250px; /* Adjust width as needed */
+    width: 250px;
+    /* Adjust width as needed */
 }
 
 /* Hover effect for the card */
@@ -232,7 +253,8 @@ body {
 /* Recipe Image Styling */
 .recipe-image {
     width: 100%;
-    height: 200px; /* Adjust height as needed */
+    height: 200px;
+    /* Adjust height as needed */
     overflow: hidden;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -241,7 +263,8 @@ body {
 .recipe-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure image covers the area without stretching */
+    object-fit: cover;
+    /* Ensure image covers the area without stretching */
     object-position: center;
 }
 
@@ -318,7 +341,8 @@ body {
         gap: 10px;
     }
 
-    #search-form .button-wrapper, #filter-form .button-wrapper {
+    #search-form .button-wrapper,
+    #filter-form .button-wrapper {
         justify-content: center;
     }
 }
@@ -333,5 +357,5 @@ body {
         font-size: 18px;
     }
 
-    
+
 }

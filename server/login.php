@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Query to find the user in the database by email
     $sql = "SELECT * FROM users WHERE Email = '$email'";
     $result = mysqli_query($db, $sql);
-    
+
     // Check if a matching user record exists
     if ($result && mysqli_num_rows($result) > 0) {
 

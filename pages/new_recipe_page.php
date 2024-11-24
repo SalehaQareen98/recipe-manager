@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <title>Create New Recipe</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../script.js"></script>
-    
+
 </head>
 
 <body>
@@ -32,7 +32,8 @@ if (!isset($_SESSION['user_id'])) {
                     <!-- Image Upload and Preview -->
                     <div class="form-group">
                         <label class="label" for="recipe_image">Upload Recipe Image</label>
-                        <input class="input" type="file" id="recipe_image" name="recipe_image" accept="image/*" onchange="previewImage(event)" />
+                        <input class="input" type="file" id="recipe_image" name="recipe_image" accept="image/*"
+                            onchange="previewImage(event)" />
                         <img id="image-preview" src="../uploads/placeholder.jpg" alt="Image Preview" />
                     </div>
 
@@ -83,7 +84,8 @@ if (!isset($_SESSION['user_id'])) {
                     <!-- Buttons -->
                     <div id="operations">
                         <button class="signup-button" type="submit">Create Recipe</button>
-                        <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to Home</button>
+                        <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to
+                            Home</button>
                     </div>
                 </form>
             </div>

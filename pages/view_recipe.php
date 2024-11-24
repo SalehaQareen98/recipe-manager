@@ -49,7 +49,8 @@ $result = mysqli_fetch_assoc($result_set);
                         <div class="btns-container">
                             <a href="home_page.php" class="back-to-home-btn">Back to Home</a>
                             <div class="card-actions">
-                                <a href="../pages/edit_recipe_page.php?id=<?php echo $result['RecipeID']; ?>" class="btn btn-edit">Edit</a>
+                                <a href="../pages/edit_recipe_page.php?id=<?php echo $result['RecipeID']; ?>"
+                                    class="btn btn-edit">Edit</a>
                                 <button class="btn btn-delete"
                                     onclick="confirmDelete(<?php echo $result['RecipeID']; ?>)">Delete</button>
                             </div>

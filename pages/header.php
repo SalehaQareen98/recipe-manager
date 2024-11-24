@@ -18,13 +18,13 @@
         </div>
         <div class="header-container">
             <div class="title">
-                <a href="home_page.php" class="nav-link">Home</a> <!-- Home link --> 
+                <a href="home_page.php" class="nav-link">Home</a> <!-- Home link -->
             </div>
-    
+
             <div class="Logout">
-                <a href="../server/logout.php" class="nav-link">Logout</a> 
+                <a href="../server/logout.php" class="nav-link">Logout</a>
             </div>
-        </div>   
+        </div>
     </header>
 </body>
 

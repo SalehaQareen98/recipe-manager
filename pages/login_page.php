@@ -51,7 +51,8 @@
                     <button class="login-button" type="submit">Login</button>
 
                     <!-- Sign-up redirect -->
-                    <button class="signup-button" type="button" onclick="window.location.href='registration_page.html';">Sign
+                    <button class="signup-button" type="button"
+                        onclick="window.location.href='registration_page.html';">Sign
                         Up</button>
                 </form>
             </div>

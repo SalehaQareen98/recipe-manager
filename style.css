@@ -312,6 +312,31 @@ footer {
     margin-bottom: 20px;
 }
 
+/* Error Box Styles */
+.error-box {
+    background-color: #ffe5e5;
+    border: 1px solid #ff4d4d;
+    color: #d8000c;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Error List Style */
+.error-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; 
+}
+
+.error-box ul li {
+    margin-bottom: 5px;
+    line-height: 1.5; 
+}
+
+
 /* Styling for input fields */
 .input,
 select,

@@ -20,6 +20,10 @@ $id = $_GET['id']; // Get the RecipeID from the URL
 $sql = "SELECT * FROM recipes WHERE RecipeID = $id";
 $result_set = mysqli_query($db, $sql);
 $result = mysqli_fetch_assoc($result_set); // Fetch the recipe data
+
+// Get error messages from the session, if any
+$errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
+unset($_SESSION['errors']); // Clear errors after displaying them
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +43,18 @@ $result = mysqli_fetch_assoc($result_set); // Fetch the recipe data
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">Edit Recipe</h1>
+
+                <!-- Display Error Messages -->
+                <?php if (!empty($errors)): ?>
+                    <div class="error-box">
+                        <ul>
+                            <?php foreach ($errors as $error): ?>
+                                <li><?php echo htmlspecialchars($error); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+
                 <form action="../server/edit_recipe.php?id=<?php echo $result['RecipeID']; ?>" method="post"
                     enctype="multipart/form-data">
 

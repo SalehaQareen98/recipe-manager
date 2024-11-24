@@ -22,7 +22,7 @@ $result_set = mysqli_query($db, $sql);
 $result = mysqli_fetch_assoc($result_set); // Fetch the recipe data
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Process the form submission
+    $errors = []; // Array to store image upload errors
 
     // Access the recipe information from the form
     $title = $_POST['title'];
@@ -38,49 +38,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Process the uploaded image
         $targetDir = "../uploads/"; // Set the target directory
         $targetFile = $targetDir . basename($_FILES['image']['name']);
-        $uploadOk = 1;
+        $uploadOk = true;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif'];
 
         // Check if the file is an actual image
         if (getimagesize($_FILES['image']['tmp_name']) === false) {
-            echo "File is not an image.";
-            $uploadOk = 0;
+            $errors[] = "Uploaded file is not a valid image.";
+            $uploadOk = false;
         }
 
-        // Check file size (limit to 2MB for example)
+        // Check file size (2MB limit)
         if ($_FILES['image']['size'] > 2000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
+            $errors[] = "Image size exceeds 2MB.";
+            $uploadOk = false;
         }
 
         // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
+        if (!in_array($imageFileType, $allowedFileTypes)) {
+            $errors[] = "Only JPG, JPEG, PNG, and GIF files are allowed.";
+            $uploadOk = false;
         }
 
-        // Check if the file was uploaded successfully
-        if ($uploadOk == 1 && move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-            $imagePath = $targetFile; // Update image path if upload is successful
-        } else {
-            echo "Sorry, there was an error uploading your file.";
+        // If valid, move the uploaded file
+        if ($uploadOk) {
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+                $imagePath = $targetFile;
+            } else {
+                $errors[] = "Error occurred while uploading the file.";
+            }
         }
     }
 
-    // Update the recipe with the new information and image
-    $sql = "UPDATE recipes SET 
-            Title = '$title', 
-            TimeToCook = '$time_to_cook', 
-            Vegetarian = $vegetarian, 
-            Ingredients = '$ingredients', 
-            Directions = '$directions', 
-            Type = '$type', 
-            Image = '$imagePath' 
-            WHERE RecipeID = $id";
-    $result = mysqli_query($db, $sql);
+    // If there are no image errors, update the recipe with the new information and image
+    if (empty($errors)) {
+        $sql = "UPDATE recipes SET 
+                Title = '$title', 
+                TimeToCook = '$time_to_cook', 
+                Vegetarian = $vegetarian, 
+                Ingredients = '$ingredients', 
+                Directions = '$directions', 
+                Type = '$type', 
+                Image = '$imagePath' 
+                WHERE RecipeID = $id";
+        $result = mysqli_query($db, $sql);
 
-    // Redirect to the show page
-    header("Location: ../pages/view_recipe.php?id=$id");
-    exit;
+        // Redirect to the show page
+        header("Location: ../pages/view_recipe.php?id=$id");
+        exit;
+    } else {
+        // Store errors in session and redirect back to the edit page
+        $_SESSION['errors'] = $errors;
+        header("Location: ../pages/edit_recipe_page.php?id=$id");
+        exit;
+    }
 }
 ?>

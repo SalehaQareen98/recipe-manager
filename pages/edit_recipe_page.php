@@ -34,6 +34,9 @@ $result = mysqli_fetch_assoc($result_set); // Fetch the recipe data
 </head>
 
 <body>
+    <header>
+        <?php include 'header.php'; ?>
+    </header>
     <div class="wrapper-container edit-page">
         <div class="overlay"></div>
         <div class="container">
@@ -101,8 +104,8 @@ $result = mysqli_fetch_assoc($result_set); // Fetch the recipe data
 
                     <div id="operations">
                         <button class="signup-button" type="submit">Save Changes</button>
-                        <button type="button" class="back-button"
-                            onclick="location.href='home_page.php'">Back to Home</button>
+                        <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to
+                            Home</button>
                     </div>
                 </form>
             </div>

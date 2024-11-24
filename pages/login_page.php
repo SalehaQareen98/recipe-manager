@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Login or sign up to access your personalized dashboard and manage your account securely. Enjoy a simple and fast registration and login process with enhanced security.">
+    <meta name="keywords"
+        content="login, sign up, register, secure login, account access, user registration, personalized dashboard, secure account management, sign in">
     <link rel="stylesheet" href="../style.css" />
     <title>Login</title>
 </head>
@@ -12,7 +16,7 @@
     <header class="main-header">
         <div class="title-container">
             <div class="logo-image">
-                <img src="../images/logo.jpg" alt="Recipe Image">
+                <img src="../images/logo.jpg" alt="Company Name Logo Looks Like a Flame">
             </div>
             <h1 class="header-title">Bon Appétit</h1>
         </div>

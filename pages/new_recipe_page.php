@@ -12,6 +12,10 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Create a new recipe with ease. Add a title, cooking time, ingredients, directions, and recipe type. Upload and preview images, and specify if it's vegetarian.">
+    <meta name="keywords"
+        content="create recipe, new recipe, recipe creation, upload recipe image, preview recipe, title field, cooking time, vegetarian option, ingredients, directions, recipe type">
     <title>Create New Recipe</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../script.js"></script>

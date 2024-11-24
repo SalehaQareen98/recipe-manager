@@ -32,6 +32,10 @@ unset($_SESSION['errors']); // Clear errors after displaying them
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Edit your recipes and upload images to make them more engaging. Update ingredients, instructions, and details easily to keep your recipes up-to-date.">
+    <meta name="keywords"
+        content="edit recipe, upload recipe image, update recipe, recipe management, modify recipe, recipe editor, ingredient update, recipe instructions, upload image">
     <title>Edit Recipe</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../script.js"></script>

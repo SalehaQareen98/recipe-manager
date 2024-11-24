@@ -12,6 +12,11 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="recipe manager, online recipes, dietary preferences, meal planning, cooking, user-friendly, culinary, favorite dishes, recipe search, recipe organization">
+    <meta name="description"
+        content="Discover and manage a vast collection of recipes tailored to your dietary preferences. 
+        Our platform offers user-friendly features for adding, searching, and organizing your favorite dishes. Join now to enhance your culinary journey.">
     <title>Recipe Manager</title>
     <link rel="stylesheet" href="../home_page_styles.css">
     <script src="../script.js"></script>
@@ -25,7 +30,9 @@ if (!isset($_SESSION['user_id'])) {
 
         <div class="main-container">
             <div class="title-image-container">
-                <img src="../images/title-img.jpg" alt="Recipe Image" class="title-img">
+                <img src="../images/title-img.jpg"
+                    alt="Two grilled steaks garnished with fresh rosemary served on a rustic stone plate, accompanied by a bowl of seasoning, olive oil, garlic cloves, and cherry tomatoes on a dark textured background."
+                    class="title-img">
                 <div class="overlay"></div>
                 <div class="title-text">
                     <h1 class="image-title">Welcome to Recipe Manager</h1>

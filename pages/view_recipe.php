@@ -30,6 +30,10 @@ $result = mysqli_fetch_assoc($result_set);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="View detailed recipes with ingredients, cooking directions, and preparation time. Discover vegetarian and non-vegetarian options, along with recipe images and types.">
+    <meta name="keywords"
+        content="view recipe, recipe details, ingredients list, cooking directions, preparation time, vegetarian recipes, non-vegetarian recipes, recipe images, recipe types">
     <title>Recipe Details</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../script.js"></script>

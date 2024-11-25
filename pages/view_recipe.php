@@ -1,27 +1,30 @@
 <?php
+// Start a session to maintain user authentication and session data
 session_start();
+// Include the database connection file
 require_once('../database/database.php');
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login_page.php");
-    exit;
+    exit; // Stop further script execution after the redirect
 }
-
+// Connect to the database
 $db = db_connect();
 
-// Check if the recipe ID is set
+// Check if the recipe ID is passed in the URL
 if (!isset($_GET['id'])) {
+        // Redirect to the login page if no recipe ID is provided
     header("Location: login_page.php");
     exit;
 }
-
+// Retrieve the recipe ID from the URL
 $id = $_GET['id'];
 
-// Fetch recipe details
+// Fetch the recipe details from the database using the provided recipe ID
 $sql = "SELECT * FROM recipes WHERE RecipeID = $id";
 $result_set = mysqli_query($db, $sql);
-$result = mysqli_fetch_assoc($result_set);
+$result = mysqli_fetch_assoc($result_set); // Fetch the recipe data as an associative array
 ?>
 
 <!DOCTYPE html>
@@ -41,34 +44,42 @@ $result = mysqli_fetch_assoc($result_set);
 
 <body>
     <header>
+         <!-- Includes the header template for consistency across pages -->
         <?php include 'header.php'; ?>
     </header>
 
     <main>
+        <!-- Wrapper for the recipe details page -->
         <div class="wrapper-container show-page">
             <div class="overlay"></div>
             <div class="container">
+                <!-- Box containing the recipe details -->
                 <div class="form-box">
+                    <!-- Header section for the recipe, including navigation buttons -->
                     <div class="headr-container">
                         <div class="btns-container">
+                             <!-- Button to navigate back to the homepage -->
                             <a href="home_page.php" class="back-to-home-btn">Back to Home</a>
                             <div class="card-actions">
+                            <!-- Link to the edit page for the current recipe -->
                                 <a href="../pages/edit_recipe_page.php?id=<?php echo $result['RecipeID']; ?>"
                                     class="btn btn-edit">Edit</a>
+                                <!-- Button to delete the recipe with a confirmation dialog -->
                                 <button class="btn btn-delete"
                                     onclick="confirmDelete(<?php echo $result['RecipeID']; ?>)">Delete</button>
                             </div>
                         </div>
+                            <!-- Displays the title of the recipe -->
                         <h1 class="recipe-title">Recipe: <?php echo htmlspecialchars($result['Title']); ?></h1>
                     </div>
 
-                    <!-- Recipe Image -->
+                    <!-- Displays the recipe image -->
                     <div class="recipe-image">
                         <img id="image-preview" src="<?php echo htmlspecialchars($result['Image']); ?>"
                             alt="Recipe Image">
                     </div>
 
-
+                    <!-- Displays detailed information about the recipe -->
                     <div class="recipe-details">
                         <h3>Type</h3>
                         <p><?php echo htmlspecialchars($result['Type']); ?></p>
@@ -91,6 +102,7 @@ $result = mysqli_fetch_assoc($result_set);
     </main>
 
     <footer>
+        <!-- Includes the footer template for consistency across pages -->
         <?php include 'footer.php'; ?>
     </footer>
 </body>

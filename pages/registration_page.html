@@ -15,23 +15,28 @@
 </head>
 
 <body>
+        <!-- Header section containing the website logo, title, and navigation link -->
     <header class="main-header">
         <div class="title-container">
+            <!-- Logo image for branding -->
             <div class="logo-image">
                 <img src="../images/logo.jpg" alt="Company Name Logo Looks Like a Flame">
             </div>
             <h1 class="header-title">Bon Appétit</h1>
         </div>
         <div class="header-container">
+            <!-- Link to the login page for existing users -->
             <div class="title">
                 <a href="login_page.php" class="nav-link">Login</a>
             </div>
         </div>
     </header>
 
+        <!-- Wrapper container for the registration form -->
     <div class="wrapper-container signup-page">
         <div class="overlay"></div>
         <div class="container">
+            <!-- Form box containing the registration form -->
             <div class="form-box">
                 <h1 class="form-title">User Registration Form</h1>
                 <form action="../server/register_user.php" method="POST" class="form" onsubmit="return validate()">
@@ -70,6 +75,7 @@
             </div>
         </div>
     </div>
+        <!-- Footer section with copyright information -->
     <footer>
         <p>&copy; 2024 Recipe Manager by Saleha and Zahra. All Rights Reserved.</p>
     </footer>

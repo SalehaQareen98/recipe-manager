@@ -1,8 +1,11 @@
 <?php
+// Start the session to maintain user state and track login status
 session_start();
+// Check if the user is logged in by verifying the 'user_id' session variable
 if (!isset($_SESSION['user_id'])) {
+        // Redirect to the login page if the user is not authenticated
     header("Location: login_page.php");
-    exit;
+    exit; // Stop further execution of the script
 }
 ?>
 
@@ -28,8 +31,11 @@ if (!isset($_SESSION['user_id'])) {
             <?php include("header.php"); ?>
         </header>
 
+       <!-- Main container holding the title image, search/filter functionality, and recipe listings -->
         <div class="main-container">
+             <!-- Section containing the title image and welcome text -->
             <div class="title-image-container">
+                <!-- Displays a background image with a descriptive alt text -->
                 <img src="../images/title-img.jpg"
                     alt="Two grilled steaks garnished with fresh rosemary served on a rustic stone plate, accompanied by a bowl of seasoning, olive oil, garlic cloves, and cherry tomatoes on a dark textured background."
                     class="title-img">
@@ -51,7 +57,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     </div>
                 </form>
-
+                <!-- Button to add a new recipe -->
                 <div class="center-button">
                     <button class="add-recipe-button" onclick="window.location.href='new_recipe_page.php'">Add
                         Recipe</button>
@@ -60,6 +66,7 @@ if (!isset($_SESSION['user_id'])) {
                 <!-- Filter form with onSubmit attribute -->
                 <form id="filter-form" class="filter-dropdown" action="../server/filter_recipes.php" method="GET"
                     onsubmit="handleFilterFormSubmit(event)">
+                     <!-- Dropdown for selecting filters such as vegetarian and cooking time -->
                     <select id="filter" name="filter">
                         <option value="">Filter Recipes</option>
                         <option value="Vegetarian">Vegetarian</option>
@@ -68,13 +75,14 @@ if (!isset($_SESSION['user_id'])) {
                         <option value="30">Max Time: 30 minutes</option>
                         <option value="60">Max Time: 1 hour</option>
                     </select>
+                    <!-- Buttons for applying or resetting filters -->
                     <div class="button-wrapper">
                         <button type="submit" class="orange-button">Apply</button>
                         <button type="button" class="green-button" onclick="resetFilterForm()">Reset</button>
                     </div>
                 </form>
             </div>
-
+           <!-- Section displaying the user's recipes -->
             <div class="sub-heading">
                 <h1>My Recipes</h1>
             </div>
@@ -85,19 +93,24 @@ if (!isset($_SESSION['user_id'])) {
                     require_once('../database/database.php');
                     $db = db_connect();
                     $user_id = $_SESSION['user_id'];
+                    // Query to fetch recipes created by the user, sorted by cooking time
                     $sql = "SELECT * FROM recipes WHERE UserID = '$user_id' ORDER BY TimeToCook ASC";
+                    // Execute the query and store the result
                     $result_set = mysqli_query($db, $sql);
-
+                    
+                    // Loop through each recipe in the result set and display it
                     while ($recipe = mysqli_fetch_assoc($result_set)) { ?>
                         <div class="recipe-card"
                             onclick="window.location.href='view_recipe.php?id=<?php echo $recipe['RecipeID']; ?>'">
+                            <!-- Displays the recipe image -->
                             <div class="recipe-image">
                                 <img src="<?php echo htmlspecialchars($recipe['Image']); ?>" alt="Recipe Image">
                             </div>
                             <h2 class="recipe-title"><?php echo htmlspecialchars($recipe['Title']); ?></h2>
                         </div>
                     <?php }
-
+                    
+                    // Free the result set and close the database connection
                     mysqli_free_result($result_set);
                     db_disconnect($db);
                     ?>

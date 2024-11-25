@@ -1,12 +1,16 @@
 <?php
+// Start a session to track user authentication and error messages
 session_start();
+
+// Redirect to the login page if the user is not authenticated
 if (!isset($_SESSION['user_id'])) {
     header("Location: login_page.php");
     exit;
 }
 
+// Include database connection script
 require_once('../database/database.php');
-$db = db_connect();
+$db = db_connect(); // Establish a database connection
 
 // Check if the RecipeID is provided
 if (!isset($_GET['id'])) {
@@ -43,6 +47,7 @@ unset($_SESSION['errors']); // Clear errors after displaying them
 
 <body>
     <header>
+        <!-- Include the header template -->
         <?php include 'header.php'; ?>
     </header>
     <div class="wrapper-container edit-page">
@@ -61,7 +66,7 @@ unset($_SESSION['errors']); // Clear errors after displaying them
                         </ul>
                     </div>
                 <?php endif; ?>
-
+                <!-- Form to edit the recipe -->
                 <form action="../server/edit_recipe.php?id=<?php echo $result['RecipeID']; ?>" method="post"
                     enctype="multipart/form-data">
 
@@ -69,23 +74,24 @@ unset($_SESSION['errors']); // Clear errors after displaying them
                     <div class="form-group">
                         <label class="label" for="image">Recipe Image</label>
                         <input type="file" name="image" id="image" onchange="previewImage(event)">
+                        <!-- Display current image -->
                         <p>Current Image: <img id="image-preview"
                                 src="<?php echo $result['Image'] ? htmlspecialchars($result['Image']) : '../uploads/placeholder.jpg'; ?>"
                                 alt="Current Recipe Image"></p>
                     </div>
-
+                    <!-- Input field for recipe title -->
                     <div class="form-group">
                         <label class="label" for="title">Title</label>
                         <input class="input" type="text" id="title" name="title" value="<?php echo $result['Title']; ?>"
                             required />
                     </div>
-
+                    <!-- Input field for cooking time -->
                     <div class="form-group">
                         <label class="label" for="time_to_cook">Time to Cook</label>
                         <input class="input" type="text" id="time_to_cook" name="time_to_cook"
                             value="<?php echo $result['TimeToCook']; ?>" required />
                     </div>
-
+                    <!-- Dropdown to select vegetarian option -->
                     <div class="form-group">
                         <label class="label" for="vegetarian">Is Vegetarian</label>
                         <select class="select" id="vegetarian" name="vegetarian" required>
@@ -93,19 +99,19 @@ unset($_SESSION['errors']); // Clear errors after displaying them
                             <option value="0" <?php echo $result['Vegetarian'] == 0 ? 'selected' : ''; ?>>No</option>
                         </select>
                     </div>
-
+                    <!-- Textarea for ingredients -->
                     <div class="form-group">
                         <label class="label" for="ingredients">Ingredients</label>
                         <textarea class="textbox" id="ingredients" name="ingredients" rows="5"
                             required><?php echo $result['Ingredients']; ?></textarea>
                     </div>
-
+                     <!-- Textarea for directions -->
                     <div class="form-group">
                         <label class="label" for="directions">Directions</label>
                         <textarea class="textbox" id="directions" name="directions" rows="10"
                             required><?php echo $result['Directions']; ?></textarea>
                     </div>
-
+                     <!-- Dropdown for recipe type -->
                     <div class="form-group">
                         <label class="label" for="type">Type</label>
                         <select class="select" id="type" name="type" required>
@@ -119,7 +125,7 @@ unset($_SESSION['errors']); // Clear errors after displaying them
                             </option>
                         </select>
                     </div>
-
+                     <!-- Buttons for form submission and navigation -->
                     <div id="operations">
                         <button class="signup-button" type="submit">Save Changes</button>
                         <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to
@@ -129,8 +135,9 @@ unset($_SESSION['errors']); // Clear errors after displaying them
             </div>
         </div>
     </div>
-
+    
     <footer>
+        <!-- Include the footer template -->
         <?php include 'footer.php'; ?>
     </footer>
 </body>

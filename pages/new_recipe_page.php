@@ -1,8 +1,11 @@
 <?php
+// Start the session to track user authentication and session data
 session_start();
+// Check if the user is logged in by verifying 'user_id' in the session
 if (!isset($_SESSION['user_id'])) {
+        // Redirect the user to the login page if not authenticated
     header("Location: login_page.php");
-    exit;
+    exit; // Stop further execution to ensure redirection
 }
 ?>
 
@@ -26,12 +29,14 @@ if (!isset($_SESSION['user_id'])) {
 
     <?php include 'header.php'; ?>
 
+<!-- Main wrapper for the Create Recipe page -->
     <div class="wrapper-container create-page">
         <div class="overlay"></div>
         <div class="container">
             <div class="form-box">
                 <h1 class="form-title">Create New Recipe</h1>
 
+                <!-- Form to collect recipe details -->
                 <form action="../server/create_recipe.php" method="POST" enctype="multipart/form-data">
                     <!-- Image Upload and Preview -->
                     <div class="form-group">
@@ -41,19 +46,18 @@ if (!isset($_SESSION['user_id'])) {
                         <img id="image-preview" src="../uploads/placeholder.jpg" alt="Image Preview" />
                     </div>
 
-                    <!-- Title Field -->
-                    <div class="form-group">
+                      <!-- Input field for the recipe title -->                    <div class="form-group">
                         <label class="label" for="title">Recipe Title</label>
                         <input class="input" type="text" id="title" name="title" required />
                     </div>
 
-                    <!-- Time to Cook -->
+                   <!-- Input field for the time required to cook the recipe -->
                     <div class="form-group">
                         <label class="label" for="time_to_cook">Time to Cook</label>
                         <input class="input" type="text" id="time_to_cook" name="time_to_cook" required />
                     </div>
 
-                    <!-- Vegetarian Option -->
+                     <!-- Dropdown to specify whether the recipe is vegetarian -->
                     <div class="form-group">
                         <label class="label" for="vegetarian">Is Vegetarian</label>
                         <select class="select" id="vegetarian" name="vegetarian" required>
@@ -62,20 +66,19 @@ if (!isset($_SESSION['user_id'])) {
                         </select>
                     </div>
 
-                    <!-- Ingredients -->
+                    <!-- Text area for listing the recipe ingredients -->
                     <div class="form-group">
                         <label class="label" for="ingredients">Ingredients</label>
                         <textarea class="textbox" id="ingredients" name="ingredients" rows="5" required></textarea>
                     </div>
 
-                    <!-- Directions -->
+                    <!-- Text area for writing the recipe directions -->
                     <div class="form-group">
                         <label class="label" for="directions">Directions</label>
                         <textarea class="textbox" id="directions" name="directions" rows="10" required></textarea>
                     </div>
 
-                    <!-- Recipe Type -->
-                    <div class="form-group">
+                         <!-- Dropdown for selecting the type of recipe (e.g., Main Course, Dessert) -->                    <div class="form-group">
                         <label class="label" for="type">Recipe Type</label>
                         <select class="select" id="type" name="type" required>
                             <option value="Appetizer">Appetizer</option>
@@ -85,7 +88,7 @@ if (!isset($_SESSION['user_id'])) {
                         </select>
                     </div>
 
-                    <!-- Buttons -->
+                     <!-- Buttons for submitting the form or navigating back to the homepage -->
                     <div id="operations">
                         <button class="signup-button" type="submit">Create Recipe</button>
                         <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to

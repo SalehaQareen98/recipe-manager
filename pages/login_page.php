@@ -14,14 +14,18 @@
 
 <body>
     <header class="main-header">
+        <!-- Container for the website logo and title -->
         <div class="title-container">
             <div class="logo-image">
+        <!-- Displays the website logo with alt text for accessibility -->
                 <img src="../images/logo.jpg" alt="Company Name Logo Looks Like a Flame">
             </div>
             <h1 class="header-title">Bon Appétit</h1>
         </div>
+        <!-- Container for navigation links -->
         <div class="header-container">
             <div class="user-profile">
+            <!-- Link to the registration page for users to sign up -->
                 <a href="registration_page.html" class="nav-link">Sign Up</a>
             </div>
         </div>
@@ -29,6 +33,7 @@
     <div class="wrapper-container login-page">
         <div class="overlay"></div>
         <div class="container">
+            <!-- Box containing the login form -->
             <div class="form-box">
                 <h1 class="form-title">Login</h1>
 

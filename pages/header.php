@@ -12,17 +12,21 @@
 
 <body>
     <header class="main-header">
+        <!-- Container for the logo and title -->
         <div class="title-container">
+            <!-- Section for the company logo -->
             <div class="logo-image">
+            <!-- Displays the company logo with an alt text describing its appearance -->
                 <img src="../images/logo.jpg" alt="Company Name Logo Looks Like a Flame">
             </div>
             <h1 class="header-title">Bon Appétit</h1>
         </div>
+        <!-- Container for navigation links -->
         <div class="header-container">
             <div class="title">
                 <a href="home_page.php" class="nav-link">Home</a> <!-- Home link -->
             </div>
-
+         <!-- Navigation link to log the user out -->
             <div class="Logout">
                 <a href="../server/logout.php" class="nav-link">Logout</a>
             </div>

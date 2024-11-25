@@ -13,6 +13,7 @@
 
 <body>
     <footer>
+    <!--This line creates a footer element displaying copyright information, ensuring year is up-to-date-->
         <p>&copy; <?php echo date("Y"); ?> Recipe Manager by Saleha and Zahra. All Rights Reserved.</p>
     </footer>
 </body>

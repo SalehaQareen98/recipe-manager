@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   `Directions` text NOT NULL,
   `Type` enum('Appetizer','Main Course','Dessert','Drinks') NOT NULL, -- Predefined list
   `UserID` int(11) NOT NULL,
-  `Image` VARCHAR(255); NOT NULL, -- Store the uploaded image in binary format
+  `Image` VARCHAR(255) NOT NULL, -- Store the uploaded image in binary format
   PRIMARY KEY (`RecipeID`),
   FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE -- Foreign key constraint
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=9;

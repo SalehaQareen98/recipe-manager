@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `recipes` (
 
 
 -- Insert data into the recipes table
-INSERT INTO `recipes` (`RecipeID`, `Title`, `TimeToCook`, `Vegetarian`, `Ingredients`, `Directions`, `Type`, `UserID`, `Favourites`, `Image`) 
+INSERT INTO `recipes` (`RecipeID`, `Title`, `TimeToCook`, `Vegetarian`, `Ingredients`, `Directions`, `Type`, `UserID`, `Image`) 
 VALUES
 -- Existing Recipes
 (1, 'Bruschetta', '15 minutes', 1, 
@@ -47,7 +47,7 @@ Salt and Pepper to taste',
 2. Dice the tomatoes and mix them with chopped basil, olive oil, salt, and pepper. 
 3. Spoon the tomato mixture onto the toasted bread slices. 
 4. Optionally, drizzle a bit more olive oil on top before serving.', 
-'Appetizer', 1, 1, '../uploads/bruschetta.jpg'),
+'Appetizer', 1, '../uploads/bruschetta.jpg'),
 
 (2, 'Chicken Wings', '30 minutes', 0, 
 '12 Chicken Wings
@@ -60,7 +60,7 @@ Salt and Pepper to taste',
 3. Place the wings on a baking sheet or grill and cook for about 25 minutes, turning halfway through. 
 4. Brush additional BBQ sauce on the wings and bake or grill for an extra 5 minutes. 
 5. Serve hot with a side of ranch or blue cheese dip.', 
-'Appetizer', 1, 0, '../uploads/chicken-wings.jpg'),
+'Appetizer', 1, '../uploads/chicken-wings.jpg'),
 
 (3, 'Vegetarian Lasagna', '1 hour', 1, 
 '6 Lasagna Sheets
@@ -74,7 +74,7 @@ Salt and Pepper to taste',
 4. Cover with foil and bake for 40 minutes. 
 5. Remove the foil and bake for another 10 minutes to brown the cheese. 
 6. Let cool slightly before serving.', 
-'Main Course', 1, 1, '../uploads/vegi-lasagna.jpg'),
+'Main Course', 1, '../uploads/vegi-lasagna.jpg'),
 
 (4, 'Grilled Steak', '45 minutes', 0, 
 '1 Steak (250g)
@@ -87,7 +87,7 @@ Salt and Pepper to taste',
 4. Cook the steak for 3-4 minutes per side for medium-rare, or adjust the time based on your desired doneness. 
 5. Remove from the grill and let the steak rest for 5-10 minutes before slicing. 
 6. Serve with your choice of sides, such as mashed potatoes or roasted vegetables.', 
-'Main Course', 1, 0, '../uploads/grilled-steak.jpg'),
+'Main Course', 1, '../uploads/grilled-steak.jpg'),
 
 (5, 'Chocolate Cake', '1.5 hours', 1, 
 '2 cups Flour
@@ -102,7 +102,7 @@ Salt and Pepper to taste',
 4. Pour the batter into a greased cake pan. 
 5. Bake for 35-40 minutes or until a toothpick inserted into the center comes out clean. 
 6. Let the cake cool before frosting with chocolate frosting.', 
-'Dessert', 1, 1, '../uploads/chocolate-cake.jpg'),
+'Dessert', 1, '../uploads/chocolate-cake.jpg'),
 
 -- Additional Recipes
 (6, 'Greek Salad', '10 minutes', 1, 
@@ -118,7 +118,7 @@ Salt and Pepper to taste',
 3. Drizzle olive oil and lemon juice over the salad. 
 4. Sprinkle oregano on top. 
 5. Toss gently and serve immediately.', 
-'Appetizer', 1, 0, '../uploads/greek-salad.jpg'),
+'Appetizer', 1,'../uploads/greek-salad.jpg'),
 
 (7, 'Spaghetti Bolognese', '45 minutes', 0, 
 '400g Spaghetti
@@ -134,7 +134,7 @@ Salt and Pepper to taste',
 4. Pour in the tomato sauce and simmer for 20 minutes. 
 5. Season with salt and pepper to taste. 
 6. Serve the sauce over cooked spaghetti and garnish with grated cheese if desired.', 
-'Main Course', 1, 1, '../uploads/Spaghetti-Bolognese.jpg'),
+'Main Course', 1, '../uploads/Spaghetti-Bolognese.jpg'),
 
 (8, 'Lemonade', '5 minutes', 1, 
 '4 Lemons juiced
@@ -146,4 +146,4 @@ Mint leaves for garnish',
 2. Add sugar and stir until dissolved. 
 3. Pour in water and mix well. 
 4. Serve over ice and garnish with mint leaves.', 
-'Drinks', 1, 0, '../uploads/mojito.jpg');
+'Drinks', 1, '../uploads/mojito.jpg');

@@ -184,12 +184,12 @@ function validate() {
 
     return valid; // Prevent form submission if not valid
 }
-
+// Function to preview uploaded image in the form
 function previewImage(event) {
     const imagePreview = document.getElementById('image-preview');
     const file = event.target.files[0];
     if (file) {
-        imagePreview.src = URL.createObjectURL(file);
+        imagePreview.src = URL.createObjectURL(file);// Show preview of uploaded image
         imagePreview.style.display = 'block';
     } else {
         imagePreview.src = '../uploads/placeholder.jpg'; // Reset to placeholder if no file
@@ -231,6 +231,7 @@ function handleFilterFormSubmit(event) {
         .catch(error => console.error('Error:', error));
 }
 
+// Reset search form and update results dynamically
 function resetSearchForm() {
     const form = document.getElementById('search-form');
 
@@ -253,6 +254,7 @@ function resetSearchForm() {
         .catch(error => console.error('Error:', error));
 }
 
+// Reset filter form and update results dynamically
 function resetFilterForm() {
     const form = document.getElementById('filter-form');
 
@@ -272,7 +274,7 @@ function resetFilterForm() {
 
 }
 
-
+// Confirm and delete a recipe via AJAX
 async function confirmDelete(recipeID) {
     // Display confirmation dialog
     const userConfirmed = confirm("Are you sure you want to delete this recipe?");

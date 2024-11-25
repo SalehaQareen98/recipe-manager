@@ -3,7 +3,7 @@
 session_start();
 // Check if the user is logged in by verifying 'user_id' in the session
 if (!isset($_SESSION['user_id'])) {
-        // Redirect the user to the login page if not authenticated
+    // Redirect the user to the login page if not authenticated
     header("Location: login_page.php");
     exit; // Stop further execution to ensure redirection
 }
@@ -29,7 +29,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <?php include 'header.php'; ?>
 
-<!-- Main wrapper for the Create Recipe page -->
+    <!-- Main wrapper for the Create Recipe page -->
     <div class="wrapper-container create-page">
         <div class="overlay"></div>
         <div class="container">
@@ -46,18 +46,19 @@ if (!isset($_SESSION['user_id'])) {
                         <img id="image-preview" src="../uploads/placeholder.jpg" alt="Image Preview" />
                     </div>
 
-                      <!-- Input field for the recipe title -->                    <div class="form-group">
+                    <!-- Input field for the recipe title -->
+                    <div class="form-group">
                         <label class="label" for="title">Recipe Title</label>
                         <input class="input" type="text" id="title" name="title" required />
                     </div>
 
-                   <!-- Input field for the time required to cook the recipe -->
+                    <!-- Input field for the time required to cook the recipe -->
                     <div class="form-group">
                         <label class="label" for="time_to_cook">Time to Cook</label>
                         <input class="input" type="text" id="time_to_cook" name="time_to_cook" required />
                     </div>
 
-                     <!-- Dropdown to specify whether the recipe is vegetarian -->
+                    <!-- Dropdown to specify whether the recipe is vegetarian -->
                     <div class="form-group">
                         <label class="label" for="vegetarian">Is Vegetarian</label>
                         <select class="select" id="vegetarian" name="vegetarian" required>
@@ -78,7 +79,8 @@ if (!isset($_SESSION['user_id'])) {
                         <textarea class="textbox" id="directions" name="directions" rows="10" required></textarea>
                     </div>
 
-                         <!-- Dropdown for selecting the type of recipe (e.g., Main Course, Dessert) -->                    <div class="form-group">
+                    <!-- Dropdown for selecting the type of recipe (e.g., Main Course, Dessert) -->
+                    <div class="form-group">
                         <label class="label" for="type">Recipe Type</label>
                         <select class="select" id="type" name="type" required>
                             <option value="Appetizer">Appetizer</option>
@@ -88,7 +90,7 @@ if (!isset($_SESSION['user_id'])) {
                         </select>
                     </div>
 
-                     <!-- Buttons for submitting the form or navigating back to the homepage -->
+                    <!-- Buttons for submitting the form or navigating back to the homepage -->
                     <div id="operations">
                         <button class="signup-button" type="submit">Create Recipe</button>
                         <button type="button" class="back-button" onclick="location.href='home_page.php'">Back to

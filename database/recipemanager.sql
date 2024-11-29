@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Insert data into the users table
 INSERT INTO `users` (`UserID`, `Name`, `Email`, `PasswordHash`) VALUES
-(1, 'Rob', 'Rob@gmail.com', '$2b$12$3brPOpDYAg0tUB.40/lCt.mkq28wuHvE31Dzi45HJCmE8JLYC5Wfa');
+(1, 'Rob', 'Rob@gmail.com', '$2b$12$3brPOpDYAg0tUB.40/lCt.mkq28wuHvE31Dzi45HJCmE8JLYC5Wfa'); --password: password_1
 
 -- Create the recipes table
 CREATE TABLE IF NOT EXISTS `recipes` (

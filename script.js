@@ -274,7 +274,7 @@ function resetFilterForm() {
 
 }
 
-// Confirm and delete a recipe via AJAX
+// Confirm and delete a recipe
 async function confirmDelete(recipeID) {
     // Display confirmation dialog
     const userConfirmed = confirm("Are you sure you want to delete this recipe?");
@@ -285,9 +285,9 @@ async function confirmDelete(recipeID) {
         const response = await fetch("../server/delete_recipe.php", {
             method: "POST",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/x-www-form-urlencoded", //will send data as {key : value} so there will be a key and a associated value in the body
             },
-            body: `id=${recipeID}`,
+            body: `id=${recipeID}`, // key is id, value is recipe id
         });
 
         if (response.ok) {

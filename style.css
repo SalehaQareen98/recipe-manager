@@ -26,7 +26,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-
+/* header */
 .main-header {
     display: flex;
     flex-direction: row;
@@ -69,7 +69,7 @@ body {
     margin-right: 10px;
     vertical-align: middle;
 }
-
+/* footer */
 footer {
     text-align: center;
     padding: 10px;
@@ -163,28 +163,23 @@ footer {
 }
 
 .login-page {
-    background-image: url('images/login-photo.jpg');
-    /* Replace with your image path */
+    background-image: url('images/login-photo.jpg'); 
 }
 
 .signup-page {
-    background-image: url('images/signup-photo.jpg');
-    /* Replace with your image path */
+    background-image: url('images/signup-photo.jpg');  
 }
 
 .edit-page {
-    background-image: url('images/edit-page-photo.jpg');
-    /* Replace with your image path */
+    background-image: url('images/edit-page-photo.jpg'); 
 }
 
 .create-page {
     background-image: url('images/create-page.jpg');
-    /* Replace with your image path */
 }
 
 .show-page {
     background-image: url('images/show-page.jpg');
-    /* Replace with your image path */
 }
 
 /* General styles for pages with background images */
@@ -197,7 +192,7 @@ footer {
     background-size: cover;
     background-position: center;
     height: 100vh;
-    /* Full viewport height */
+    /* Full viewport:vertical height */
     color: white;
     /* Ensures text contrasts with the background */
     overflow: hidden;
@@ -231,11 +226,8 @@ footer {
 .show-page .container {
     position: relative;
     z-index: 2;
-    /* Places the content above the overlay */
     text-align: center;
-    /* Optional: Center-align text/forms */
     padding: 20px;
-    /* Optional: Add padding for spacing */
 }
 
 
@@ -252,26 +244,10 @@ footer {
     /* Allow vertical scrolling if content overflows */
 }
 
-.wrapper-container {
-    background-size: cover;
-    /* Ensures the image covers the entire viewport */
-    background-position: center;
-    /* Centers the image */
-    background-repeat: no-repeat;
-    /* Prevents the image from repeating */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #fff;
-}
-
-
 
 
 .form-box {
     background-color: rgba(255, 255, 255);
-    /* Slight transparency */
     padding: 40px;
     width: 90%;
     max-width: 400px;
@@ -315,7 +291,7 @@ footer {
     margin-bottom: 20px;
 }
 
-/* Error Box Styles */
+/* Error Box Styles for invalid image*/
 .error-box {
     background-color: #ffe5e5;
     border: 1px solid #ff4d4d;
@@ -340,7 +316,7 @@ footer {
 }
 
 
-/* Styling for input fields */
+/* Styling for all input fields */
 .input,
 select,
 .textbox {
@@ -452,7 +428,8 @@ textarea {
     display: block;
     color: #444;
     margin-bottom: 5px;
-    font-weight: 600;
+    /* making it bold */
+    font-weight: 600; 
 }
 
 /* Checkbox styling */

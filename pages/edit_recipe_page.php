@@ -75,9 +75,9 @@ unset($_SESSION['errors']); // Clear errors after displaying them
                         <label class="label" for="image">Recipe Image</label>
                         <input type="file" name="image" id="image" onchange="previewImage(event)">
                         <!-- Display current image -->
-                        <p>Current Image: <img id="image-preview"
+                        <img id="image-preview"
                                 src="<?php echo $result['Image'] ? htmlspecialchars($result['Image']) : '../uploads/placeholder.jpg'; ?>"
-                                alt="Current Recipe Image"></p>
+                                alt="Current Recipe Image">
                     </div>
                     <!-- Input field for recipe title -->
                     <div class="form-group">

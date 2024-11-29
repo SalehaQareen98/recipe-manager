@@ -2,10 +2,10 @@
 require_once('db_credentials.php'); // Include database credentials
 
 // Function to connect to the database
-function db_connect() {
+function db_connect()
+{
     // Use mysqli to establish a connection
-    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-    
+    $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME) //, 3308); //port number
     // Check if connection was successful
     if (mysqli_connect_errno()) {
         $msg = "Database connection failed: ";
@@ -13,12 +13,13 @@ function db_connect() {
         $msg .= " (" . mysqli_connect_errno() . ")"; // Get the error number
         exit($msg); // Terminate the script and display the error
     }
-    
-    return $connection; // Return the database connection
+
+    return $connection; // Return the database connection 
 }
 
 // Function to disconnect from the database
-function db_disconnect($connection) {
+function db_disconnect($connection)
+{
     if (isset($connection)) { // Check if the connection is active
         mysqli_close($connection); // Close the connection
     }

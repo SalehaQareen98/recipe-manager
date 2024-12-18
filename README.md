@@ -48,53 +48,7 @@ Backend: PHP
 Database: MySQL (SQL scripts for DDL included)
 Server: XAMPP
 Tools: Git, VSCode
-Folder Structure
-The project files are organized into clear, modular folders:
 
-plaintext
-Copy code
-RECIPE-MANAGER/
-│
-├── database/                    # All database-related files
-│   ├── database.php             # Database connection script
-│   ├── db_credentials.php       # Database credentials
-│   └── recipemanager.sql        # SQL script for table creation
-│
-├── documentation/               # Supporting documentation
-│   └── Assignment 2 documentation.pdf
-│
-├── images/                      # Placeholder images
-│
-├── pages/                       # HTML and modular PHP pages
-│   ├── edit_recipe_page.php
-│   ├── footer.php
-│   ├── header.php
-│   ├── home_page.php
-│   ├── login_page.php
-│   ├── new_recipe_page.php
-│   ├── registration_page.html
-│   └── view_recipe.php
-│
-├── Presentation/                # Project presentation slides
-│   └── Bon Appétit.pptx
-│
-├── server/                      # Server-side PHP scripts
-│   ├── create_recipe.php
-│   ├── delete_recipe.php
-│   ├── edit_recipe.php
-│   ├── filter_recipes.php
-│   ├── login.php
-│   ├── logout.php
-│   ├── register_user.php
-│   └── search_recipes.php
-│
-├── uploads/                     # User-uploaded images
-│
-├── home_page_styles.css         # CSS for home page
-├── index.html                   # Main landing page
-├── README.md                    # Project documentation
-├── script.js                    # JavaScript for dynamic behavior
-└── style.css                    # External CSS for all pages
 Database Design
 The database is designed to store user and recipe information efficiently.
 

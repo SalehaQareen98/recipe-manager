@@ -16,7 +16,7 @@ An interactive, dynamic, and database-driven web application for managing recipe
 7. [Sample SQL Schema](#sample-sql-schema)
 8. [Credits](#credits)
 9. [Notes](#notes)
-
+10. [Contact](#Contact)
 ---
 
 ## Project Overview
@@ -220,11 +220,21 @@ CREATE TABLE IF NOT EXISTS `recipes` (
 
 ---
 
+
 ## Notes
 
 - Ensure XAMPP services (Apache, MySQL) are running before accessing the project.
 - Place the `uploads` and `images` folders correctly to ensure file storage works as intended.
 - Clean coding practices were followed with comments for better readability.
+
+---
+
+## Contact
+
+For questions or feedback, feel free to reach out:
+
+- **Email**: salehaqareen@gmail.com
+- **GitHub**: [SalehaQareen98]([https://github.com/your-username](https://github.com/SalehaQareen98))
 
 ---
 
